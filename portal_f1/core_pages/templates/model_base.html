@@ -1,0 +1,29 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>
+      Portal F1 - {% block title %}{% endblock title %}
+    </title>
+
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="author" content="tabthemes">
+
+        <!-- Favicon -->
+    <link href="{% static 'site/img/carousel-1.png' %}" rel="icon">
+
+    {% block stylesheets_base %}{% endblock stylesheets_base %}
+
+  </head>
+
+  {% block body_base %}{% endblock body_base %}
+  
+  {% block script_base %}{% endblock script_base %}
+
+</html>

@@ -1,0 +1,34 @@
+ {% if perms.core_registration.view_company %}
+    <li class="nav-item pcoded-menu-caption">
+        <label>Cadastros Gerais</label>
+    </li>
+
+    <li class="nav-item pcoded-hasmenu">
+        <a>
+            <span class="pcoded-micon"><i class="feather icon-layout"></i></span>
+            <span class="pcoded-mtext">Cadastros</span>
+        </a>
+
+        <ul class="pcoded-submenu"> 
+            {% if perms.core_registration.view_company %}
+                <li><a href="{% url 'listar_company' %}">Empresas</a></li>
+            {% endif %}
+
+            {% if perms.core_registration.view_city %}
+                <li><a href="{% url 'list_city' %}">Cidades</a></li>
+            {% endif %}
+
+            {% if perms.core_registration.view_state %}
+                <li><a href="{% url 'list_state' %}">Estados</a></li>
+            {% endif %}
+
+            {% if perms.core_registration.view_country %}
+                <li><a href="{% url 'list_country' %}">Países</a></li>
+            {% endif %}
+
+            {% if perms.core_access.view_user %}
+                <li><a href="{% url 'list_user' %}">Usuários</a></li>
+            {% endif %}
+        </ul>
+    </li>
+{% endif %}

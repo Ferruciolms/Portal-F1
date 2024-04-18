@@ -1,0 +1,151 @@
+{% extends 'system/model_system.html' %}
+
+{% load static %}
+
+
+{% block title %} Details {{object.driver.fname}} {% endblock %}
+
+{% block stylesheets_extra %}
+{% endblock stylesheets_extra %}
+
+{% block body_system %}
+<section class="pcoded-main-container">
+    <div class="pcoded-content">
+        <!-- Menu Reversivo start -->
+        <div class="page-header">
+            <div class="page-block">
+                <div class="row align-items-center">
+                    <div class="col-md-12">
+                        <div class="page-header-title">
+                            <h5 class="m-b-10">{{object.driver.fname}} {{object.driver.lname}}</h5>
+                        </div>
+                        <ul class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="{% url 'analytics' %}"><i
+                                    class="feather icon-home"></i></a></li>
+                            <li class="breadcrumb-item">Drivers list</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Menu Reversivo end -->
+
+        <div class="row">
+            <div class=" row col-md-5">
+                <div class=" col-md-6">
+                    <div class="card bg-c-red order-card">
+                        <div class="card-body">
+                            <h6 class="text-white">Total Races</h6>
+                            <h2 class="text-right text-white">
+                                <img src="{% static '/img/bandeira-de-box.png' %}" alt=""
+                                     class="feather icon-tag float-left"><span>{{object.total_races}}</span>
+                            </h2>
+                            <p class="m-b-0">Completed Races<span class="float-right">{{object.completed_races}}</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class=" col-md-6">
+                    <div class="card bg-c-red order-card">
+                        <div class="card-body">
+                            <h6 class="text-white">Poles</h6>
+                            <h2 class="text-right text-white">
+                                <img src="{% static '/img/carro-de-corrida.png' %}" alt=""
+                                     class="feather icon-tag float-left"><span>{{object.pole}}</span>
+
+                            </h2>
+                            <h2></h2>
+                            <p class="m-b-0">Starts on pole position</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class=" row col-md-7">
+                <div class="col-md-4">
+                    <div class="card bg-c-silver order-card">
+                        <div class="card-body">
+                            <h6 class="text-white">Second Places</h6>
+                            <h2 class="text-right text-white">
+                                <img src="{% static '/img/podium-p2.png' %}" alt=""
+                                     class="feather icon-tag float-left"><span>{{object.second_places}}</span>
+                            </h2>
+                            <p class="m-b-0">Finished in P2</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card bg-c-gold order-card">
+                        <div class="card-body">
+                            <h6 class="text-white">First Places</h6>
+                            <h2 class="text-right text-white">
+                                <img src="{% static '/img/podium-p1.png' %}" alt=""
+                                     class="feather icon-tag float-left"><span>{{object.first_places}}</span>
+                            </h2>
+                            <p class="m-b-0">Finished in P1</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card bg-c-bronze order-card">
+                        <div class="card-body">
+                            <h6 class="text-white">Third Places</h6>
+                            <h2 class="text-right text-white">
+                                <img src="{% static '/img/podium-p3.png' %}" alt=""
+                                     class="feather icon-tag float-left"><span>{{object.third_places}}</span>
+                            </h2>
+                            <p class="m-b-0">Finished in P3</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card-block" style="padding-top: 0px;">
+                    <canvas id="driver_years"></canvas>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card-block" style="padding-top: 0px;">
+                    <canvas id="driver_seasons"></canvas>
+                </div>
+            </div>
+        </div>
+        <table class="table caption-top">
+            <caption>Best Lap by circuit</caption>
+            <thead>
+            <tr>
+                <th>Country</th>
+                <th>Circuit</th>
+                <th>Best Lap</th>
+                <th>Season</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for lap in object.best_laps %}
+            <tr>
+                <th scope="row"></th>
+                <td><h6 class="mb-1">{{ lap.race__circuit__name }}</h6>
+                    <p class="m-0">{{ lap.race__circuit__country }}</p></td>
+                <td>{{lap.mile_seconds}}</td>
+                <td>{{ lap.race__year }}</td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+
+    </div>
+    </div>
+
+</section>
+
+{% endblock body_system %}
+
+Specific Page JS goes HERE
+{% block script_system %}
+<script> driver={{object.driver.id}} </script>
+<script src="{% static 'driver/driver_detail.js' %}"></script>
+<script src="{% static 'driver/driver_season_detail.js' %}"></script>
+{% endblock script_system %}

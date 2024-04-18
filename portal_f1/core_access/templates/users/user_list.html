@@ -1,0 +1,127 @@
+{% extends 'system/model_system.html' %}
+
+{% load static %}
+
+{% block title %} Listar Usuários {% endblock %}
+
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block body_system %}
+    <section class="pcoded-main-container">
+            <div class="pcoded-content">
+                <!-- Menu Reversivo start -->
+                <div class="page-header">
+                    <div class="page-block">
+                        <div class="row align-items-center">
+                            <div class="col-md-12">
+                                <div class="page-header-title">
+                                    <h5 class="m-b-10">Usuários</h5>
+                                </div>
+                                <ul class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="{% url 'index' %}"><i class="feather icon-home"></i></a></li>
+                                    <li class="breadcrumb-item">Lista de Usuários</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Menu Reversivo end -->
+
+                <!-- Menu Corpo start -->
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5>Usuários Cadastrados</h5>
+                                <a href="{% url 'cadastrar_usuario' %}" class="btn btn-primary btn-sm float-right">Adicionar Usuário</a>
+                            </div>
+
+                            <div class="card-body">
+                                <form class="form-inline" method="GET">
+                                    <div class="form-group">
+                                        <label for="filter_user">Filtro</label>
+                                        {{ filter.form }}
+                                    </div>
+                                    <div class="mt-4">
+                                        <button type="submit" id="filter-button" class="btn btn-block btn-primary mb-4">Filtrar</button>
+                                    </div>
+                                </form>
+
+                                <div class="card-body table-border-style">
+                                    <div class="table-responsive">
+                                        <table class="table table-striped" id="tabela-listar-user">
+                                         <thead>
+                                            <tr>
+                                                <th>Nome</th>
+                                                <th>Sobrenome</th>
+                                                <th>E-mail</th>
+                                                <th>CPF</th>
+                                                <th>Usuário</th>
+                                                <th>Ativo</th>
+                                                <th>Último acesso</th>
+                                                <th>Opções</th>
+                                            </tr>
+                                        </thead>
+                                            <tbody>
+                                               {% for user in object_list %}
+                                                    {% if user.is_superuser == 0 and user.login_disabled == False %}
+                                                        <tr>
+                                                            <td>{{ user.first_name }}</td>
+                                                            <td>{{ user.last_name }}</td>
+                                                            <td>{{ user.email }}</td>
+                                                            <td>{{ user.cpf }}</td>
+                                                            <td>{{ user.username }}</td>
+                                                            {% if user.is_active %}
+                                                                <td>
+                                                                    <div class="btn btn-icon btn-success btn-sm" data-toggle="tooltip" data-placement="top" title="Ativo">
+                                                                        <i class="fa fa-check" aria-hidden="true" style="width:15px"></i>
+                                                                    </div>
+                                                                </td>
+                                                            {% else %}
+                                                                <td>
+                                                                    <div class="btn btn-icon btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="Inativo">
+                                                                        <i class="fa fa-xmark" aria-hidden="true" style="width:15px"></i>
+                                                                    </div>
+                                                                </td>
+                                                            {% endif %}
+                                                            <td>
+                                                                {% if user.last_login is None %}
+                                                                    Nunca
+                                                                {% else %}
+                                                                    {{user.last_login}}
+                                                                {% endif %}
+                                                            </td>
+                                                            <td>
+                                                                <a href="{% url 'edit_adm_user' user.id %}">
+                                                                    <button type="button" class="btn btn-icon btn-warning btn-sm" data-toggle="tooltip" data-placement="top" title="Editar">
+                                                                        <i class="fa fa-edit" aria-hidden="true"></i>
+                                                                    </button>
+                                                                </a>
+                                                            </td>
+                                                        </tr>
+                                                    {% endif %}
+                                                   {% empty %}
+                                                   <tr>
+                                                       <td colspan="13" align="center">Nenhum Usuário Cadastrado</td>
+                                                   </tr>
+                                               {% endfor %}
+                                            </tbody>
+                                        </table>
+                                        {% include 'includes/paginacao_list.html' %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Menu Corpo end -->
+        </div>
+    </section>
+
+{% endblock body_system %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block script_base %}
+{% endblock script_base %}

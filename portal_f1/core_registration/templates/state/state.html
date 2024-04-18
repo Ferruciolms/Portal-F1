@@ -1,0 +1,80 @@
+{% extends 'system/model_system.html' %}
+
+{% load static %}
+
+{% block title %} {{ title }} {% endblock %}
+
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block body_system %}
+    <section class="pcoded-main-container">
+        <div class="pcoded-content">
+            <!-- Menu Reversivo start -->
+            <div class="page-header">
+                <div class="page-block">
+                    <div class="row align-items-center">
+                        <div class="col-md-12">
+                            <div class="page-header-title">
+                                <h5 class="m-b-10">Estado</h5>
+                            </div>
+                            <ul class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="{% url 'inicio' %}"><i class="feather icon-home"></i></a></li>
+                                <li class="breadcrumb-item"><a href="{% url 'list_state' %}">Lista de Estados</a></li>
+                                <li class="breadcrumb-item">Cadastro de Estado</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Menu Reversivo end -->
+
+
+            <!-- Menu Corpo start -->
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4>Cadastro de Estados</h4>
+                            <hr>
+                        </div>
+                        <div class="card-body">
+                            <form role="form" action="" method="POST" class="needs-validation" enctype="multipart/form-data" novalidate>
+                                {% csrf_token %}
+                                <div class="form-row">
+                                    <div class="col-md-6 mb-3">
+                                        <label>Descrição</label>
+                                        {{ form.description }}
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label>Sigla</label>
+                                        {{ form.acronym }}
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label>País</label>
+                                        {{ form.country }}
+                                    </div>
+                                </div>
+
+                                <button class="btn  btn-primary" type="submit">
+                                    {% autoescape off %}
+                                        {{ icone }}
+                                    {% endautoescape %}
+                                    {{ bottom }}
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Menu Corpo end -->
+        </div>
+    </section>
+    <!-- [ Main Content ] end -->
+
+{% endblock body_system %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+{% endblock javascripts %}

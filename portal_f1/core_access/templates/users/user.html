@@ -1,0 +1,156 @@
+{% extends 'system/model_system.html' %}
+
+{% load static %}
+
+{% block title %} Cadastrar Usuário {% endblock %}
+
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block body_system %}
+    <section class="pcoded-main-container">
+        <div class="pcoded-content">
+            <!-- Menu Reversivo start -->
+            <div class="page-header">
+                <div class="page-block">
+                    <div class="row align-items-center">
+                        <div class="col-md-12">
+                            <div class="page-header-title">
+                                <h5 class="m-b-10">Usuário</h5>
+                            </div>
+                            <ul class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="{% url 'index' %}"><i class="feather icon-home"></i></a></li>
+                                <li class="breadcrumb-item"><a href="{% url 'list_user' %}">Lista de usuários</a></li>
+                                <li class="breadcrumb-item">Cadastro de Usuário</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Menu Reversivo end -->
+
+
+            <!-- Menu Corpo start -->
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4>Cadastrar Usuário</h4>
+                            <hr>
+                        </div>
+                        <div class="card-body">
+<!--                            <h5>Usuário</h5>-->
+<!--                            <hr>-->
+                            <form role="form" action="" method="POST" class="needs-validation" enctype="multipart/form-data" novalidate>
+                                {% csrf_token %}
+                                <div class="form-row">
+                                    <div class="col-md-6 mb-3">
+                                        <label>Nome</label>
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text"><i class="feather icon-user"></i></span>
+                                            </div>
+                                            {{ form.first_name }}
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label>Sobrenome</label>
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text"><i class="feather icon-user"></i></span>
+                                            </div>
+                                            {{ form.last_name }}
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label>CPF</label>
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text"><i class="feather icon-user"></i></span>
+                                            </div>
+                                            {{ form.cpf }}
+                                        </div>
+                                        <div class="text-danger">
+                                            {{form.cpf.errors}}
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label>Telefone</label>
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text"><i class="feather icon-phone"></i></span>
+                                            </div>
+                                            {{ form.telephone }}
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label>E-mail</label>
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text"><i class="feather icon-mail"></i></span>
+                                            </div>
+                                            {{ form.email }}
+                                        </div>
+									    <span class="text-danger">{{ form.email.errors }}</span>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label>Usuário</label>
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text"><i class="feather icon-user"></i></span>
+                                            </div>
+                                            {{ form.username }}
+                                        </div>
+                                        <span class="text-danger">{{ form.username.errors }}</span>
+                                    </div>
+
+                                    <div class="col-md-6 mb-3">
+                                        <label>Senha</label>
+                                        <div class="input-group mb-4">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text"><i class="feather icon-lock"></i></span>
+                                            </div>
+                                            {{ form.password1 }}
+                                        </div>
+                                        <span class="text-danger">{{ form.password1.errors }}</span>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label>Confirmar senha</label>
+                                        <div class="input-group mb-4">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text"><i class="feather icon-lock"></i></span>
+                                            </div>
+                                            {{ form.password2 }}
+                                        </div>
+                                        <span class="text-danger">{{ form.password2.errors }}</span>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                         <label>Grupo de acesso</label>
+                                        {{ form.group }}
+                                    </div>
+                                </div>
+
+
+                                <button class="btn  btn-primary" type="submit">
+                                    {% autoescape off %}
+                                    <i class="feather icon-log-out"></i>
+                                    {% endautoescape %}
+                                    Cadastrar
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Menu Corpo end -->
+        </div>
+    </section>
+    <!-- [ Main Content ] end -->
+
+{% endblock body_system %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block script_base %}
+    <script src="{% static 'system/js/plugins/jquery.mask.min.js' %}"></script>
+{% endblock script_base %}

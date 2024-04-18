@@ -1,0 +1,83 @@
+<li class="nav-item pcoded-menu-caption">
+    <label>Todas Imagens</label>
+</li>
+
+<li class="nav-item pcoded-hasmenu">
+    <a>
+        <span class="pcoded-micon"><i class="feather icon-image"></i></span>
+        <span class="pcoded-mtext">Imagens</span>
+    </a>
+
+    <ul class="pcoded-submenu">
+        <li><a href="{% url 'image_show' %}">Animais</a></li>
+
+    </ul>
+</li>
+{% if user.is_manager %}
+<li class="nav-item pcoded-menu-caption">
+    <label>Logs</label>
+</li>
+<li class="nav-item pcoded-hasmenu">
+    <a>
+        <span class="pcoded-micon"><i class="feather icon-layout"></i></span>
+        <span class="pcoded-mtext">Buscas</span>
+    </a>
+    <ul class="pcoded-submenu">
+        <li><a href="{% url 'listar_busca' %}">Log de Buscas</a></li>
+    </ul>
+</li>
+{% endif %}
+
+{% if user.is_manager or user.is_validator or user.is_observer %}
+<li class="nav-item pcoded-menu-caption">
+    <label>Cadastros</label>
+</li>
+
+<li class="nav-item pcoded-hasmenu">
+    <a>
+        <span class="pcoded-micon"><i class="feather icon-layout"></i></span>
+        <span class="pcoded-mtext">Espécies</span>
+    </a>
+
+    <ul class="pcoded-submenu">
+        <li><a href="{% url 'listar_especie' %}">Espécies</a></li>
+    </ul>
+</li>
+{% endif %}
+
+{% if user.is_manager %}
+<li class="nav-item pcoded-hasmenu">
+    <a>
+        <span class="pcoded-micon"><i class="feather icon-layout"></i></span>
+        <span class="pcoded-mtext">Taxonomia</span>
+    </a>
+
+    <ul class="pcoded-submenu">
+        <li><a href="{% url 'listar_domain' %}">Domínios</a></li>
+        <li><a href="{% url 'listar_kingdom' %}">Reinos</a></li>
+        <li><a href="{% url 'listar_phylum' %}">Filos</a></li>
+        <li><a href="{% url 'listar_class_specie' %}">Classes</a></li>
+        <li><a href="{% url 'listar_order' %}">Ordens</a></li>
+        <li><a href="{% url 'listar_family' %}">Famílias</a></li>
+        <li><a href="{% url 'listar_genus' %}">Gêneros</a></li>
+    </ul>
+</li>
+{% endif %}
+
+
+{% if user.is_manager %}
+<li class="nav-item pcoded-menu-caption">
+    <label>Configurações</label>
+</li>
+
+<li class="nav-item pcoded-hasmenu">
+    <a>
+        <span class="pcoded-micon"><i class="feather icon-layout"></i></span>
+        <span class="pcoded-mtext">Base de Busca</span>
+    </a>
+
+    <ul class="pcoded-submenu">
+        <li><a href="{% url 'listar_base_busca' %}">Quantidade de imagens</a></li>
+    </ul>
+</li>
+{% endif %}

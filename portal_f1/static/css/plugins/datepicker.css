@@ -1,0 +1,148 @@
+
+.datepicker-dropdown {
+    border-right: #1976D2;
+    border-left: #1976D2;
+    margin-left: 100px;
+}
+
+.datepicker {
+    background-color: #fff;
+    border-radius: 0 !important;
+    align-content: center !important;
+    padding: 0 !important
+}
+.datepicker-dropdown.datepicker-orient-left:before {
+    left: calc(50% - 6px) !important
+}
+
+.datepicker-dropdown.datepicker-orient-left:after {
+    left: calc(50% - 5px) !important;
+    border-bottom-color: #1976D2
+}
+
+.datepicker-dropdown.datepicker-orient-right:after {
+    border-bottom-color: #1976D2
+}
+
+.datepicker table tr td.today,
+span.focused {
+    border-radius: 50% !important;
+    background-image: linear-gradient(#FFF3E0, #FFE0B2)
+}
+
+
+
+.bootstrap-iso .input-group-addon:first-child {
+    border-right: 0;
+    width: 100 px;
+}
+
+.active.day {
+    border-radius: 50% !important;
+    background-image: linear-gradient(#1976D2, #1976D2) !important;
+    color: #fff !important
+}
+
+
+.input-group-addon {
+    padding: 6px 12px;
+    width: 40px;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 1;
+    color: #555555;
+    text-align: center;
+    background-color: #eeeeee;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+}
+
+.input-group-addon .fa-calendar {
+    top: 20px;
+    font-size: 15px;
+    color: #1976D2;
+    z-index: 1000
+}
+
+.datepicker-dropdown.datepicker-orient-right:after {
+    border-bottom-color: #1976D2
+}
+
+
+.datepicker thead tr:nth-child(2) {
+    background-color: #1976D2 !important
+}
+
+.datepicker thead tr:nth-child(3) th {
+    font-weight: bold !important;
+    padding: 20px 10px !important;
+    color: #BDBDBD !important
+}
+
+
+.datepicker .old,
+.day,
+.new {
+    width: 40px !important;
+    height: 40px !important;
+    border-radius: 50px !important
+}
+
+.datepicker .day.old,
+.day.new {
+    color: #E0E0E0 !important
+}
+
+.datepicker .day.old:hover,
+.day.new:hover {
+    border-radius: 50% !important
+}
+
+.datepicker .old-day:hover,
+.day:hover,
+.new-day:hover,
+.month:hover,
+.year:hover,
+.decade:hover,
+.century:hover {
+    border-radius: 50% !important;
+    background-color: #eee
+}
+
+
+.datepicker .range-start,
+.range-end {
+    border-radius: 50% !important;
+    background-image: linear-gradient(#1976D2, #1976D2) !important
+}
+
+.datepicker .range {
+    background-color: #E3F2FD !important
+}
+
+.datepicker .prev,
+.next,
+.datepicker-switch {
+    border-radius: 0 !important;
+    padding: 10px 10px 10px 10px !important;
+    font-size: 18px;
+    opacity: 0.7;
+    color: #fff
+}
+
+.datepicker .prev:hover,
+.next:hover,
+.datepicker-switch:hover {
+    background-color: inherit !important;
+    opacity: 1
+}
+
+@media screen and (max-width: 726px) {
+    .datepicker-dropdown.datepicker-orient-right:before {
+        right: calc(50% - 6px)
+    }
+
+    .datepicker-dropdown.datepicker-orient-right:after {
+        right: calc(50% - 5px)
+    }
+}

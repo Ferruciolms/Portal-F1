@@ -1,0 +1,45 @@
+{% extends 'system/model_system.html' %}
+
+{% load static %}
+
+{% block title %} Dashboard {% endblock %}
+
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block body_system %}
+<div class="pcoded-main-container">
+    <div class="pcoded-wrapper">
+        <div class="pcoded-content">
+            <div class="pcoded-inner-content">
+                <div class="main-body">
+                    <div class="card">
+                        <div class="card-body" style="heig">
+                            <div id="carouselExampleIndicatorscaption" class="carousel slide" data-ride="carousel">
+
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active">
+                                        <img class="img-fluid d-block w-100"
+                                             src="{% static 'system/images/sem_título-1.jpg' %}" alt="First slide">
+                                        <div class="carousel-caption d-none d-md-block">
+                                            <h2 class="text-white"
+                                                style="background: linear-gradient(90deg, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 100%)">
+                                                Wellcome To PortaF1 Analytics</h2>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock body_system %}
+<!-- [ Main Content ] end -->
+
+{% block script_base %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.js"></script>
+{% endblock script_base %}
+

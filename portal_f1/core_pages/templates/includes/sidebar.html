@@ -1,0 +1,19 @@
+	<!-- [ navigation menu ] start -->
+	<nav class="pcoded-navbar menupos-fixed menu-light ">
+		<div class="navbar-wrapper">
+			<div class="navbar-content scroll-div" >
+				<ul class="nav pcoded-inner-navbar">
+
+					{% include 'includes/menu_principal.html' %}
+
+					{% if request.user.is_authenticated %}
+						{% include 'menu_core_registration.html' %
+					{% endif %}
+
+				</ul>
+			</div>
+		</div>
+	</nav>
+    <!-- [ navigation menu ] end -->
+
+

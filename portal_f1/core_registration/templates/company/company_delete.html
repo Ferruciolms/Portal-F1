@@ -1,0 +1,65 @@
+{% extends 'system/model_system.html' %}
+
+{% load static %}
+
+{% block title %} Empresas {% endblock %}
+
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block body_system %}
+<!-- [ Main Content ] start -->
+    <section class="pcoded-main-container">
+        <div class="pcoded-content">
+            <!-- Menu Reversivo start -->
+            <div class="page-header">
+                <div class="page-block">
+                    <div class="row align-items-center">
+                        <div class="col-md-12">
+                            <div class="page-header-title">
+                                <h5 class="m-b-10">Excluir Empresa</h5>
+                            </div>
+                            <ul class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="{% url 'inicio' %}"><i class="feather icon-home"></i></a></li>
+                                <li class="breadcrumb-item"><a href="{% url 'listar_company' %}">Lista de Empresas</a></li>
+                                <li class="breadcrumb-item">Excluir Empresa</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Menu Reversivo end -->
+            <!-- Menu Corpo start -->
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4>Exclusão de Empresa</h4>
+                            <hr>
+                        </div>
+                        <div class="card-body">
+<!--                            <h5>Empresa</h5>-->
+<!--                            <hr>-->
+                           <form role="form" action="" method="POST" class="needs-validation" novalidate>
+                                {% csrf_token %}
+                                <div class="form-row">
+                                    <div class="col-md-6 mb-3">
+                                        Deseja Excluir a Empresa <b>{{ object.description }}</b>?
+                                    </div>
+                                </div>
+                                <button class="btn  btn-danger" type="submit">Excluir</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Menu Corpo end -->
+        </div>
+    </section>
+    <!-- [ Main Content ] end -->
+{% endblock body_system %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block script_base %}
+
+{% endblock script_base %}

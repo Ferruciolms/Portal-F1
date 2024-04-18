@@ -1,0 +1,17 @@
+{% if user.is_manager %}
+<li class="nav-item pcoded-menu-caption">
+    <label>Acesso</label>
+</li>
+
+<li class="nav-item pcoded-hasmenu">
+    <a>
+        <span class="pcoded-micon"><i class="feather icon-layout"></i></span>
+        <span class="pcoded-mtext">Acesso</span>
+    </a>
+
+    <ul class="pcoded-submenu">
+
+        <li><a href="{% url 'list_user' %}">Usuários</a></li>
+    </ul>
+</li>
+{% endif %}

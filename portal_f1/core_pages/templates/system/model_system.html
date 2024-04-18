@@ -1,0 +1,55 @@
+{% extends 'model_base.html' %}
+
+{% load static %}
+
+{% block stylesheets_base %}
+<script type="text/javascript" src="{% static 'system/js/field-validation.js' %}"></script>
+
+<link rel="stylesheet" href="{% static 'system/css/plugins/bootstrap.min.css' %}">
+
+
+<!-- prism css -->
+<link rel="stylesheet" href="{% static 'system/css/plugins/prism-coy.css' %}">
+<!--choices menu-->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/bbbootstrap/libraries@main/choices.min.css">
+
+<link rel="stylesheet" href="{% static 'admin/css/vendor/select2/select2.css' %}">
+
+<!-- vendor css -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/jquery.slick/1.6.0/slick.css"/>
+<link rel="stylesheet" href="{% static 'system/css/style.css' %}">
+<link rel="stylesheet" href="{% static 'system/css/style_nocs.css' %}">
+<link rel="stylesheet" href="{% static 'system/fonts/academic/css/academicons.min.css' %}">
+<script src="https://kit.fontawesome.com/6dfe6b45f0.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" type="text/css" href="{% static 'system/css/plugins/datatables.min.css' %}"/>
+
+{% block stylesheets_extra %}{% endblock stylesheets_extra %}
+
+{% endblock stylesheets_base %}
+
+{% block body_base %}
+  <body class="">
+
+      <div class="loader-bg">
+          <div class="loader-track">
+            <div class="loader-fill"></div>
+          </div>
+      </div>
+      {% include 'system/navigation.html' %}
+      {% include 'system/sidebar.html' %}
+      {% block stylesheets_system %}
+      {% endblock stylesheets_system %}
+
+      {% block body_system %}
+      {% endblock body_system %}
+
+      {% include 'system/scripts.html' %}
+  </body>
+
+{% block script_system %}{% endblock script_system %}
+
+{% endblock body_base %}
+
+
+{% block footer_system %}
+{% endblock footer_system %}

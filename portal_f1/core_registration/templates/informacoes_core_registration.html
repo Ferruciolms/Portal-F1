@@ -1,0 +1,53 @@
+{% extends 'system/model_system.html' %}
+
+{% load static %}
+
+{% block title %} Dashboard {% endblock %}
+
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block body_system %}
+    <section class="pcoded-main-container">
+        <div class="pcoded-content">
+            <!-- Menu Reversivo start -->
+            <div class="page-header">
+                <div class="page-block">
+                    <div class="row align-items-center">
+                        <div class="col-md-12">
+                            <div class="page-header-title">
+                                <h5 class="m-b-10">Informações</h5>
+                            </div>
+                            <ul class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="{% url 'index' %}"><i class="feather icon-home"></i></a></li>
+                                <li class="breadcrumb-item">Cadastros Gerais</li>
+                                <li class="breadcrumb-item">Informações</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Menu Reversivo end -->
+            <!-- Menu Corpo start -->
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5>Cadastros</h5>
+                        </div>
+                        <div class="card-body">
+                            <p>Inicialmente será disponibilizado apenas o cadastro de empresa, o cadastro de País, Estado e Cidade precisam ser feitos pelo link do admin.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Menu Corpo end -->
+        </div>
+    </section>
+
+{% endblock body_system %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block script_base %}
+
+{% endblock script_base %}

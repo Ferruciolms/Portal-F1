@@ -1,0 +1,101 @@
+{% extends 'system/model_system.html' %}
+
+{% load static %}
+
+{% block title %} Editar Perfil do Usuário {% endblock %}
+
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block body_system %}
+
+<!-- [ Main Content ] start -->
+    <section class="pcoded-main-container">
+        <div class="pcoded-content">
+            <!-- Menu Reversivo start -->
+            <div class="page-header">
+                <div class="page-block">
+                    <div class="row align-items-center">
+                        <div class="col-md-12">
+                            <div class="page-header-title">
+                                <h5 class="m-b-10"> {{ titulo }} </h5>
+                            </div>
+                            <ul class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="{% url 'index' %}"><i class="feather icon-home"></i></a></li>
+                                <li class="breadcrumb-item"><a href="{% url 'list_user' %}">Lista de usuários</a></li>
+                                <li class="breadcrumb-item">Perfil de usuário</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Menu Reversivo end -->
+
+            <!-- Menu Corpo start -->
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4>Olá {{ request.user.first_name }}!</h4>
+                            <hr>
+                        </div>
+                        <div class="card-body">
+                            <form role="form" action="" method="POST" class="needs-validation" enctype="multipart/form-data" novalidate>
+                                {% csrf_token %}
+                                <div class="form-group row">
+                                    <div class="col-md-6 mb-3">
+                                        <label>Nome</label>
+                                        {{ form.first_name }}
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label>Sobrenome</label>
+                                        {{ form.last_name }}
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                         <label>CPF</label>
+                                        {{ form.cpf }}
+                                        <div class="text-danger">
+                                            {{form.cpf.errors}}
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                         <label>Telefone</label>
+                                        {{ form.telephone }}
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label>E-mail</label>
+                                        {{ form.email }}
+                                        <div class="invalid-feedback">
+                                            Por favor, insira um e-mail válido.
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                         <label>Ativo</label>
+                                        {{ form.is_active }}
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                         <label>Grupo de acesso</label>
+                                        {{ form.group }}
+                                    </div>
+                                </div>
+                                <button class="btn  btn-primary" type="submit">
+                                    {{ botao }}
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Menu Corpo end -->
+
+
+        </div>
+    </section>
+    <!-- [ Main Content ] end -->
+
+{% endblock body_system %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block script_base %}
+    <script src="{% static 'system/js/plugins/jquery.mask.min.js' %}"></script>
+{% endblock script_base %}
