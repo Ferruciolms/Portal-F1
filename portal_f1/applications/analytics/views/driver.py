@@ -14,6 +14,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from analytics.models.drivers_standings import DriverStanding
 from analytics.models.lap_times import LapTime
+from analytics.models.circuits import Circuit
 
 
 class DriverDetailView(DetailView):
@@ -28,10 +29,10 @@ class DriverDetailView(DetailView):
         driver = Driver.objects.get(pk=self.kwargs["pk"])
         results = Result.objects.filter(driver=driver)
         pole = Qualifying.objects.filter(driver=driver, position=1)
-        lap_times = pd.DataFrame(LapTime.objects.filter(driver=driver).values("lap", "race__year", "race__circuit","race__circuit__country", "race__circuit__name", "mile_seconds"))
+        lap_times = pd.DataFrame(LapTime.objects.filter(driver=driver).values("lap", "race__year", "race__circuit","race__circuit__country", "race__circuit__id", "race__circuit__name", "mile_seconds"))
         lap_times = lap_times.iloc[lap_times.groupby("race__circuit")["mile_seconds"].idxmin()]
         lap_times['mile_seconds'] = pd.to_datetime(lap_times['mile_seconds'], unit='ms').dt.strftime('%M:%S.%f').str[:-3]
-        lap_times = lap_times.sort_values(by="race__circuit").reset_index(drop=True)
+        lap_times = lap_times.sort_values(by="race__circuit__country").reset_index(drop=True)
 
 
 
@@ -40,13 +41,20 @@ class DriverDetailView(DetailView):
 
 
         for row in lap_times.iterrows():
+            circuit = Circuit.objects.get(pk=int(row[1]["race__circuit__id"]))
+            try:
+                flag_country = circuit.country_flag.url
+            except:
+                flag_country = ""
             lap_info = {
+                "flag_country": flag_country,
                 "lap": row[1]["lap"],
                 "race__circuit__name": row[1]["race__circuit__name"],
                 "race__circuit__country": row[1]["race__circuit__country"],
-                "race__year": row[1]["race__year"],
+                "race__year": str(row[1]["race__year"]),
                 "mile_seconds": row[1]["mile_seconds"]
             }
+
             best_laps.append(lap_info)
 
 
@@ -143,6 +151,8 @@ class DriverDetailAPIView(APIView):
         dataframe_second = position_dataframes[1]
         dataframe_third = position_dataframes[2]
 
+
+
         start_year = results['race__year'].min()
         end_year = results['race__year'].max()
 
@@ -215,7 +225,7 @@ class DriverDetailAPIView(APIView):
         data.append(races_by_year)
 
 
-        labels = ['Poles', 'firsts', 'seconds', 'thirds', 'races']
+        labels = ['Poles', '1st', '2nd', '3rd', 'Races']
         type = ['line', 'line', 'line', 'line', 'bar']
         color = ['red', '#daa520', '#c0c0c0', '#cd7f32', 'rgba(255, 99, 132, 0.2)']
 

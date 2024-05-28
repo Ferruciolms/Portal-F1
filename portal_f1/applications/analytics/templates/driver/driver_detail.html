@@ -20,7 +20,7 @@
                             <h5 class="m-b-10">{{object.driver.fname}} {{object.driver.lname}}</h5>
                         </div>
                         <ul class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="{% url 'analytics' %}"><i
+                            <li class="breadcrumb-item"><a href="{% url 'driver_list' %}"><i
                                     class="feather icon-home"></i></a></li>
                             <li class="breadcrumb-item">Drivers list</li>
                         </ul>
@@ -31,7 +31,7 @@
 
         <!-- Menu Reversivo end -->
 
-        <div class="row">
+        <div class="row justify-content-center">
             <div class=" row col-md-5">
                 <div class=" col-md-6">
                     <div class="card bg-c-red order-card">
@@ -101,43 +101,84 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-6">
-                <div class="card-block" style="padding-top: 0px;">
-                    <canvas id="driver_years"></canvas>
+        </div>
+        <div class="row justify-content-center">
+            <div class="row col-md-12">
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="text-5xl font-extrabold dark:text-white">Results <small
+                                    class="ms-2 font-semibold text-gray-500 dark:text-gray-400">By Season</small></h3>
+                        </div>
+                        <div class="card-block" style="padding-top: 0px;">
+                            <canvas id="driver_years"></canvas>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="col-md-6">
-                <div class="card-block" style="padding-top: 0px;">
-                    <canvas id="driver_seasons"></canvas>
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="text-5xl font-extrabold dark:text-white">Points <small
+                                    class="ms-2 font-semibold text-gray-500 dark:text-gray-400">By Season</small></h3>
+                        </div>
+                        <div class="card-block" style="padding-top: 0px;">
+                            <canvas id="driver_seasons"></canvas>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-        <table class="table caption-top">
-            <caption>Best Lap by circuit</caption>
-            <thead>
-            <tr>
-                <th>Country</th>
-                <th>Circuit</th>
-                <th>Best Lap</th>
-                <th>Season</th>
-            </tr>
-            </thead>
-            <tbody>
-            {% for lap in object.best_laps %}
-            <tr>
-                <th scope="row"></th>
-                <td><h6 class="mb-1">{{ lap.race__circuit__name }}</h6>
-                    <p class="m-0">{{ lap.race__circuit__country }}</p></td>
-                <td>{{lap.mile_seconds}}</td>
-                <td>{{ lap.race__year }}</td>
-            </tr>
-            {% endfor %}
-            </tbody>
-        </table>
 
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="text-5xl font-extrabold dark:text-white">Best Laps <small
+                                class="ms-2 font-semibold text-gray-500 dark:text-gray-400">By Circuit</small></h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-body table-bfamily-style">
+                            <div class="table-responsive">
+                                <table class="table table-striped" id="tabela-listar-driver">
+                                    <thead>
+                                    <tr>
+                                        <th class="flag"></th>
+                                        <th>Country</th>
+                                        <th>Circuit</th>
+                                        <th>Best Lap</th>
+                                        <th>Season</th>
 
-    </div>
-    </div>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for lap in object.best_laps %}
+                                    <tr>
+
+                                        <td class="flag">
+                                            <div id="box">
+                                                <img src="{{ lap.flag_country }}" class="circle">
+                                            </div>
+                                        </td>
+                                        <td class="column1">{{ lap.race__circuit__country }}</td>
+                                        <td class="column2">{{ lap.race__circuit__name }}</td>
+                                        <td class="column3">{{lap.mile_seconds}}</td>
+                                        <td class="column4">{{ lap.race__year }}</td>
+
+                                    </tr>
+                                    {% empty %}
+                                    <tr>
+                                        <td colspan="5" align="center">No Driver found.</td>
+                                    </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
 
 </section>
 
