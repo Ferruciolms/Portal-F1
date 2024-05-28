@@ -6,7 +6,7 @@
 /* Header
 Inicio ============================================================*/
 .img-fluid-logo {
-    max-width: 100%;
+    max-width: 80%;
     height: auto;
 }
 
@@ -96,12 +96,12 @@ Final ============================================================*/
 }
 @media only screen and  (max-width: 991px) {
     .img-fluid-logo {
-        height: 40px;
+        height: 20px;
     }
 
     .img-fluid-logo.n-logged{
         max-width: 100%;
-       height: 40px;
+       height: 50px;
     }
 }
 
