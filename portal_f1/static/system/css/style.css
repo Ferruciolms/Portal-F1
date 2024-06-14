@@ -20790,6 +20790,13 @@ pre[class*=language-]:before {
     padding: 0 55px;
 }
 
+.m-header1 {
+    width: 308px;
+    height: -webkit-fill-available;
+    text-align: -webkit-center;
+
+}
+
 .pcoded-header .m-header .logo-dark,
     .pcoded-header .m-header .logo-thumb {
     display: none;

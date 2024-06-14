@@ -1,27 +1,36 @@
- <!-- Navbar Start -->
-    <nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
-        <a href="index.html" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
-            <h2 class="m-0 text-primary"><i class="fa fa-car me-3"></i>Portal F1</h2>
-        </a>
-        <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarCollapse">
-            <div class="navbar-nav ms-auto p-4 p-lg-0">
-                <a href="index.html" class="nav-item nav-link active">Home</a>
-                <a href="about.html" class="nav-item nav-link"> Photo Gallery</a>
-                <a href="service.html" class="nav-item nav-link">Circuits</a>
-                <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
-                    <div class="dropdown-menu fade-up m-0">
-                        <a href="booking.html" class="dropdown-item">Constructors</a>
-                        <a href="team.html" class="dropdown-item">Records</a>
-                        <a href="testimonial.html" class="dropdown-item">Testimonial</a>
-                    </div>
-                </div>
-                <a href="contact.html" class="nav-item nav-link">Contact</a>
-            </div>
-            <a href="{% url 'analytics' %}" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">Access the F1 Analytics Tool<i class="fa fa-arrow-right ms-3"></i></a>
+<!-- Navbar Start -->
+{% load static %}
+<nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
+    <a href="{% url 'blog' %}" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
+        <div class="m-header1" style="
+    width: 308px;
+    height: -webkit-fill-available;
+    text-align: -webkit-center;
+    align-content: center;
+
+">
+            <img src="/static/analytics/img/nocs/logo2-PF1.png" alt="" class="logo-pf1-navbar">
         </div>
-    </nav>
-    <!-- Navbar End -->
+    </a>
+    <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+        <div class="navbar-nav ms-auto p-4 p-lg-0">
+            <a href="{% url 'blog' %}" class="nav-item nav-link active">Home</a>
+            <a href="{% url 'gallery' %}" class="nav-item nav-link"> Photo Gallery</a>
+            <a href="{% url 'circuits' %}" class="nav-item nav-link">Circuits</a>
+            <div class="nav-item dropdown">
+                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
+                <div class="dropdown-menu fade-up m-0">
+                    <a href="booking.html" class="dropdown-item">Constructors</a>
+                    <a href="team.html" class="dropdown-item">Records</a>
+                </div>
+            </div>
+            <a href="{% url 'contact' %}" class="nav-item nav-link">Contact</a>
+        </div>
+        <a href="{% url 'analytics' %}" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">Access the F1 Analytics
+            Tool<i class="fa fa-arrow-right ms-3"></i></a>
+    </div>
+</nav>
+<!-- Navbar End -->
