@@ -50,7 +50,7 @@ INSTALLED_APPS = ['django.contrib.admin', 'django.contrib.auth', 'django.contrib
                   # aplications adicionados
                   'core_pages.apps.CorePagesConfig', 'core_access.apps.CoreAccessConfig',
                   'core_registration.apps.CoreRegistrationConfig', 'captcha', 'core_log.apps.CoreLogConfig',
-                  'analytics.apps.AnalyticsConfig', 'blog.apps.BlogConfig',
+                  'analytics.apps.AnalyticsConfig', 'blog.apps.BlogConfig', 'svg'
 
                   ]
 
