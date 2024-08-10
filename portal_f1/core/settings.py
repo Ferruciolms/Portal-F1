@@ -73,11 +73,22 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'core.wsgi.application'
 
-DATABASES = {'default': {'ENGINE': 'django.db.backends.postgresql_psycopg2', 'NAME': config('NAME_DB'),
-                         'USER': config('USER_DB'), 'PASSWORD': config('PASSWORD_DB'),
-                         'HOST': config('HOST_DB'), 'PORT': config('PORT_DB'),
-                         'OPTIONS': {'isolation_level': psycopg2.extensions.ISOLATION_LEVEL_SERIALIZABLE,
-                                     'options': '-c search_path=' + config('SCHEMA_DB')}}}
+# DATABASES = {'default': {'ENGINE': 'django.db.backends.postgresql_psycopg2', 'NAME': config('NAME_DB'),
+#                          'USER': config('USER_DB'), 'PASSWORD': config('PASSWORD_DB'),
+#                          'HOST': config('HOST_DB'), 'PORT': config('PORT_DB'),
+#                          'OPTIONS': {'isolation_level': psycopg2.extensions.ISOLATION_LEVEL_SERIALIZABLE,
+#                                      'options': '-c search_path=' + config('SCHEMA_DB')}}}
+
+DDATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.environ.get('NAME_DB'),  # This will get the database name from your .env file
+        'USER': os.environ.get('USER_DB'),  # This will get the username from your .env file
+        'PASSWORD': os.environ.get('PASSWORD_DB'),  # This will get the password from your .env file
+        'HOST': 'db',  # This should match the service name in docker-compose.yml
+        'PORT': '5432',  # Default PostgreSQport
+}
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators

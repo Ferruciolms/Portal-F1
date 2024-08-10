@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  db:
+    build:
+      context: ./
+      dockerfile: Dockerfile.postgres
+    command: ["postgres", "-c", "dynamic_shared_memory_type=posix"]
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U postgres" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    env_file:
+      - ./portal_f1/.env
+    image: postgres:latest
+    restart: always
+    ports:
+      - "5432:5432"
+    volumes:
+      - C:/Program Files/PostgreSQL/16/data:/var/lib/postgresql/data
+  web:
+    restart: always
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    command: python ./portal_f1/manage.py runserver 0.0.0.0:8000
+    volumes:
+      - ./portal_f1/:/usr/src/app/
+    ports:
+      - 8000:8000
