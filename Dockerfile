@@ -1,21 +1,19 @@
 FROM python:3.12
-WORKDIR portal_f1
 
-#set environment variables
-ENV PYTHONDONTWRITEBYTECODE 1
-ENV PYTHONUNBUFFERED 1
-ENV LANG=pt_BR.UTF-8
-ENV LC_ALL=pt_BR.UTF-8
-ENV LC_MESSAGES=pt_BR.UTF-8
-ENV LC_MONETARY=pt_BR.UTF-8
-ENV LC_NUMERIC=pt_BR.UTF-8
-ENV LC_TIME=pt_BR.UTF-8
-ENV DYNAMIC_SHARED_MEMORY_TYPE=posix
-
-#install dependencies
-RUN pip install --upgrade pip
+COPY portal_f1/applications applications
+COPY portal_f1/core core
+COPY portal_f1/core_access core_access
+COPY portal_f1/core_log core_log
+COPY portal_f1/core_pages core_pages
+COPY portal_f1/core_registration core_registration
+COPY portal_f1/gunicorn/gunicorn-cfg.py gunicorn-cfg.py
+COPY portal_f1/static static
+COPY portal_f1/staticfiles staticfiles
+COPY portal_f1/manage.py .
 COPY requirements.txt .
+COPY portal_f1/.env .
+
 RUN pip install -r requirements.txt
 
-#copy project
-COPY . .
+WORKDIR .
+CMD ["gunicorn", "--config", "gunicorn-cfg.py", "core.wsgi"]
