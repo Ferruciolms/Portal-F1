@@ -46,7 +46,7 @@
                         </form>
                         <div class="card-body table-bfamily-style">
                             <div class="table-responsive">
-                                <table class="table table-striped" id="tabela-listar-driver">
+                                <table class="table table-striped" id="tabela-listar-circuit">
                                     <thead>
                                     <tr>
                                         <th class="flag"></th>
@@ -63,7 +63,7 @@
                                     <tr>
                                         <td class="flag">
                                             <div id="box">
-                                                <img src="{{ circuit.country_flag}}" class="circle">
+                                                <img src="{{ circuit.country_flag.url}}" class="circle">
                                             </div>
                                         </td>
                                         <td>{{ circuit.country }}</td>
