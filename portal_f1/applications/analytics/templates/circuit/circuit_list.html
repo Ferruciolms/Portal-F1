@@ -2,7 +2,7 @@
 
 {% load static %}
 
-{% block title %} Pilotos {% endblock %}
+{% block title %} Circuits {% endblock %}
 
 {% block body_system %}
 <section class="pcoded-main-container">
@@ -35,22 +35,22 @@
                     </div>
                     <div class="card-body">
                         <form class="form-inline" method="GET">
-                                <div class="form-group">
-                                    <label for="filter_circuit">Filter</label>
-                                    {{ filter.form }}
-                                </div>
-                                <div class="mt-4">
-                                    <button type="submit" id="filter-button" class="btn btn-block btn-primary mb-4">Filter</button>
-                                </div>
-                            </form>
+                            <div class="form-group">
+                                <label for="filter_circuit">Filter</label>
+                                {{ filter.form }}
+                            </div>
+                            <div class="mt-4">
+                                <button type="submit" id="filter-button" class="btn btn-block btn-primary mb-4">Filter
+                                </button>
+                            </div>
+                        </form>
                         <div class="card-body table-bfamily-style">
                             <div class="table-responsive">
                                 <table class="table table-striped" id="tabela-listar-circuits">
                                     <thead>
                                     <tr>
-                                        <th class="flag"></th>
+
                                         <th>Country</th>
-                                        <th>ID</th>
                                         <th>Name</th>
                                         <th>City</th>
                                         <th>Stats</th>
@@ -60,13 +60,13 @@
                                     <tbody>
                                     {% for circuit in object_list %}
                                     <tr>
-                                        <td class="flag">
-                                            <div id="box">
-                                                <img src="{{ circuit.country_flag.url}}" class="circle">
+                                        <td>
+                                            <div class="flag-container">
+                                                <div class="flag-icon"
+                                                     style="background-image: url('{{ circuit.country_flag.url }}');"></div>
+                                                {{ circuit.country }}
                                             </div>
                                         </td>
-                                        <td>{{ circuit.country }}</td>
-                                        <td>{{ circuit.id }}</td>
                                         <td>{{ circuit.name }}</td>
                                         <td>{{ circuit.city }}</td>
                                         <td>

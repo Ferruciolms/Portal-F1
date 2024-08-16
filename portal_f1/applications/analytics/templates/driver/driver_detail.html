@@ -142,7 +142,7 @@
                                 <table class="table table-striped" id="tabela-listar-driver">
                                     <thead>
                                     <tr>
-                                        <th class="flag"></th>
+                                        
                                         <th>Country</th>
                                         <th>Circuit</th>
                                         <th>Best Lap</th>
@@ -153,13 +153,13 @@
                                     <tbody>
                                     {% for lap in object.best_laps %}
                                     <tr>
+                                        <td>
+                                            <div class="flag-container">
+                                                <div class="flag-icon"
+                                                     style="background-image: url('{{ lap.flag_country }}');"></div>
+                                                {{ lap.race__circuit__country }}
 
-                                        <td class="flag">
-                                            <div id="box">
-                                                <img src="{{ lap.flag_country }}" class="circle">
                                             </div>
-                                        </td>
-                                        <td class="column1">{{ lap.race__circuit__country }}</td>
                                         <td class="column2">{{ lap.race__circuit__name }}</td>
                                         <td class="column3">{{lap.mile_seconds}}</td>
                                         <td class="column4">{{ lap.race__year }}</td>

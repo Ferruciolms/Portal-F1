@@ -1,8 +1,7 @@
 from django.views.generic import ListView
-from django.db.models import FloatField, Value, IntegerField, Min, CharField
 from analytics.filters.circuit import CircuitFilter
 from analytics.models.circuits import Circuit
-from analytics.models.results import Result
+
 
 
 class CircuitList(ListView):
