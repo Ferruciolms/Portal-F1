@@ -20,7 +20,10 @@ class CircuitFilter(django_filters.FilterSet):
 
     def filter_all(self, queryset, name, value):
         return Circuit.objects.filter(
-            Q(name__icontains=value)
+            Q(name__icontains=value) |
+            Q(city__icontains=value) |
+            Q(country__icontains=value)
+
         )
 
     class Meta:
