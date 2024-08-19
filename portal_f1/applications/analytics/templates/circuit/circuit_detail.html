@@ -18,25 +18,29 @@
                     <div class="col-md-12">
                         <div class="page-header-title">
                             <h3 class="text-5xl font-extrabold dark:text-white">{{object.name}} <small
-                                    class="ms-2 font-semibold text-gray-500 dark:text-gray-400">{{object.city}} -
-                                {{object.country}}</small></h3>
+                                    class="ms-2 font-semibold text-gray-500 dark:text-gray-400"> - {{ circuit.country }}
+                                <div class="flag-icon"
+                                     style="background-image: url('{{ circuit.country_flag.url }}');"></div>
+                            </small>
+                            </h3>
                         </div>
-                        <ul class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="{% url 'circuit_list' %}"><i
-                                    class="feather icon-home"></i></a></li>
-                            <li class="breadcrumb-item">Circuit list</li>
-                        </ul>
                     </div>
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{% url 'circuit_list' %}"><i
+                                class="feather icon-home"></i></a></li>
+                        <li class="breadcrumb-item">Circuit list</li>
+                    </ul>
                 </div>
             </div>
         </div>
+    </div>
 
-        <!-- Menu Reversivo end -->
+    <!-- Menu Reversivo end -->
 
-        {% endblock body_system %}
+    {% endblock body_system %}
 
-        Specific Page JS goes HERE
-        {% block script_system %}
-        <script> circuit={{object.circuit.id}} </script>
-        <script src="{% static 'circuit/circuit_detail.js' %}"></script>
-        {% endblock script_system %}
+    Specific Page JS goes HERE
+    {% block script_system %}
+    <script> circuit={{object.circuit.id}} </script>
+    <script src="{% static 'circuit/circuit_detail.js' %}"></script>
+    {% endblock script_system %}
