@@ -1,8 +1,11 @@
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
 from analytics.filters.circuit import CircuitFilter
 from analytics.models.circuits import Circuit
+from rest_framework.views import APIView
 
-
+class CircuitDetailView(DetailView):
+    template_name = 'circuit/circuit_detail.html'
+    model = Circuit
 
 class CircuitList(ListView):
     model = Circuit
@@ -23,3 +26,13 @@ class CircuitList(ListView):
         data = CircuitFilter(self.request.GET, queryset=queryset).qs
 
         return data
+
+
+class CircuitDetailAPIView(APIView):
+    def get(self, request, format=None):
+        circuit = Circuit.objects.get(pk=int(request.GET.get('circuit')))
+
+        data = {}
+
+        return Response(data)
+
