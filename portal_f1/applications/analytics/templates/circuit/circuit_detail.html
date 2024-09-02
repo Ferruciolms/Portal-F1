@@ -3,7 +3,7 @@
 {% load static %}
 
 
-{% block title %} Details {{object.name}} {% endblock %}
+{% block title %} Details {{object.circuit.name}} {% endblock %}
 
 {% block stylesheets_extra %}
 {% endblock stylesheets_extra %}
@@ -11,36 +11,68 @@
 {% block body_system %}
 <section class="pcoded-main-container">
     <div class="pcoded-content">
+
         <!-- Menu Reversivo start -->
         <div class="page-header">
             <div class="page-block">
                 <div class="row align-items-center">
-                    <div class="col-md-12">
-                        <div class="page-header-title">
-                            <h3 class="text-5xl font-extrabold dark:text-white">{{object.name}} <small
-                                    class="ms-2 font-semibold text-gray-500 dark:text-gray-400"> - {{ circuit.country }}
-                                <div class="flag-icon"
-                                     style="background-image: url('{{ circuit.country_flag.url }}');"></div>
-                            </small>
-                            </h3>
+                    <div class="col-md-10">
+                        <div class="row align-items-center">
+                            <div class="col-md-12">
+                                <div class="page-header-title">
+                                    <h5 class="m-b-10">{{object.circuit.name}} <small
+                                            class="ms-2 font-semibold text-gray-500 dark:text-gray-400"> -
+                                        {{ object.circuit.country }}
+                                    </small></h5>
+                                </div>
+                                <ul class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="{% url 'circuit_list' %}"><i
+                                            class="feather icon-home"></i></a></li>
+                                    <li class="breadcrumb-item">Circuit list</li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
-                    <ul class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{% url 'circuit_list' %}"><i
-                                class="feather icon-home"></i></a></li>
-                        <li class="breadcrumb-item">Circuit list</li>
-                    </ul>
+                    <div class="col-md-2">
+                        <img class="img-flag-detail" src="{{ object.circuit.country_flag.url }}">
+
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
     <!-- Menu Reversivo end -->
+    <div class="card-block">
+        <div class="container">
+            <div class="info-cards">
+                <div class="info-card">
+                    <h2 style="color: #fff;">{{object.total_races}}</h2>
+                    <p>Total GPs in this circuit</p>
+                </div>
+                <div class="info-card">
+                    <h2 style="color: #fff;">{{object.different_poles}}</h2>
+                    <p>Different drivers on Pole Position</p>
+                </div>
+                <div class="info-card">
+                    <h2 style="color: #fff;">{{object.different_winners}}</h2>
+                    <p>Drivers have won this Gran Prix</p>
+                </div>
+            </div>
 
-    {% endblock body_system %}
 
-    Specific Page JS goes HERE
-    {% block script_system %}
-    <script> circuit={{object.circuit.id}} </script>
-    <script src="{% static 'circuit/circuit_detail.js' %}"></script>
-    {% endblock script_system %}
+            <div class="card-block" style="padding-top: 0px;">
+                <canvas id="top_wins"></canvas>
+            </div>
+        </div>
+    </div>
+    </div>
+</section>
+{% endblock body_system %}
+
+Specific Page JS goes HERE
+
+{% block script_system %}
+<script> circuit={{object.circuit.id}} </script>
+<script src="{% static 'circuit/circuit_detail.js' %}"></script>
+{% endblock script_system %}
