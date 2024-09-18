@@ -26718,9 +26718,10 @@ div.dtk-focus-alt table.dataTable tbody th.focus {
     }
 
 .img-flag-detail {
-    box-shadow: 6px 6px 10px grey;
+    box-shadow: 2px 2px 5px grey;
     max-height: 80px;
     float: right;
+    border-radius: 4px;
 }
 
 }
