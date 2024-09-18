@@ -59,14 +59,36 @@
                     <p>Drivers have won this Gran Prix</p>
                 </div>
             </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="row col-md-12">
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="text-5xl font-extrabold dark:text-white">Top <small
+                                    class="ms-2 font-semibold text-gray-500 dark:text-gray-400">Winners</small></h3>
+                        </div>
+                        <div class="card-block" style="padding-top: 0px;">
+                            <canvas id="top_wins"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="text-5xl font-extrabold dark:text-white">Circuit <small
+                                    class="ms-2 font-semibold text-gray-500 dark:text-gray-400">DNFs</small></h3>
+                        </div>
+                        <div class="card-block" style="padding-top: 0px;">
+                            <canvas id="circuit_dnfs"></canvas>
+                        </div>
+                    </div>
+                </div>
 
-
-            <div class="card-block" style="padding-top: 0px;">
-                <canvas id="top_wins"></canvas>
             </div>
         </div>
     </div>
-    </div>
+
 </section>
 {% endblock body_system %}
 
@@ -75,4 +97,5 @@ Specific Page JS goes HERE
 {% block script_system %}
 <script> circuit={{object.circuit.id}} </script>
 <script src="{% static 'circuit/circuit_detail.js' %}"></script>
+<script src="{% static 'circuit/circuit_detail_dnf.js' %}"></script>
 {% endblock script_system %}
