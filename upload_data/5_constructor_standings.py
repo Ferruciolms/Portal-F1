@@ -3,7 +3,7 @@ import os
 processed = "./processed"
 file = "constructor_standings.csv"
 dataframe = pd.read_csv("./data/" + file, header=0)
-dataframe = dataframe[['constructorStandingsId','points','position','positionText','wins','raceId','constructorId']]
+dataframe = dataframe[['constructorStandingsId','points','position','positionText','wins','constructorId','raceId']]
 # constructorStandingsId;raceId;constructorId;points;position;positionText;wins
 
 dataframe = dataframe.replace("\\N", 0)

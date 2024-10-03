@@ -4,6 +4,7 @@ processed = "./processed"
 file = "results.csv"
 dataframe = pd.read_csv("./data/" + file, header=0)
 dataframe = dataframe[['milliseconds','resultId']]
+dataframe = dataframe.replace("\\N", 0)
 
 
 if not os.path.exists(processed):

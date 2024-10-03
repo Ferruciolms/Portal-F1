@@ -45,7 +45,9 @@ class CircuitDetailView(DetailView):
 
     def get_object(self, queryset=None):
         circuit = Circuit.objects.get(pk=self.kwargs["pk"])
-        races_in_circuit = pd.DataFrame(Race.objects.filter(circuit=circuit))
+        # races = list(Race.objects.filter(circuit=circuit).values_list('id', flat=True))
+        # races_in_circuit = list(Result.objects.filter(race__in=races, grid=1).values_list('id', flat=True))
+        # print(races_in_circuit)
         poles = pd.DataFrame(
             Result.objects.filter(race__circuit=circuit, grid=1).values("driver", "driver__lname", "race__circuit"))
 
@@ -63,7 +65,7 @@ class CircuitDetailView(DetailView):
         top_winners = top_winners.sort_values('wins', ascending=False)
 
         data = {"circuit": circuit,
-                "total_races": len(races_in_circuit),
+                "total_races": len(poles),
                 "different_poles": len(dif_poles),
                 "different_winners": len(top_winners),
                 }

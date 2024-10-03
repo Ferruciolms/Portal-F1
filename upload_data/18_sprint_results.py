@@ -4,6 +4,8 @@ processed = "./processed"
 file = "sprint_results.csv"
 dataframe = pd.read_csv("./data/" + file, header=0)
 dataframe =dataframe.drop(["time","fastestLap","fastestLapTime","milliseconds"], axis=1)
+dataframe = dataframe[['resultId','number','grid','position','positionText','positionOrder','points','laps','raceId','driverId','constructorId','statusId']]
+dataframe = dataframe.replace("\\N", 0)
 
 
 
