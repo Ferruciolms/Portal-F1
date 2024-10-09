@@ -39,7 +39,7 @@ class IndexView(TemplateView):
             driverChampion = driver_standing[driver_standing.position == 1 & (driver_standing.race__id == row['race__id'])]
             campeoesDrivers.add(int(driverChampion.driver.iloc[0]))
 
-        print(campeoesDrivers)
+
         context["drivers_wc"] = len(campeoesDrivers)
         context["constructors_wc"] = len(campeoes)
         context["total_constructors"] = total_constructors
