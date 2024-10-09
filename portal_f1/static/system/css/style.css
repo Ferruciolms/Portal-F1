@@ -26723,6 +26723,11 @@ div.dtk-focus-alt table.dataTable tbody th.focus {
     float: right;
     border-radius: 4px;
 }
+.highlighted {
+    background-color: blueviolet !important;
+    color: white;
+}
+}
 
 }
 

@@ -5,6 +5,8 @@ from analytics.filters.circuit import CircuitFilter
 from analytics.models.circuits import Circuit
 from rest_framework.views import APIView
 from rest_framework.response import Response
+
+from analytics.models.lap_times import LapTime
 from analytics.models.results import Result
 from analytics.models.drivers import Driver
 from analytics.models.races import Race
@@ -45,9 +47,37 @@ class CircuitDetailView(DetailView):
 
     def get_object(self, queryset=None):
         circuit = Circuit.objects.get(pk=self.kwargs["pk"])
-        # races = list(Race.objects.filter(circuit=circuit).values_list('id', flat=True))
-        # races_in_circuit = list(Result.objects.filter(race__in=races, grid=1).values_list('id', flat=True))
-        # print(races_in_circuit)
+
+        try:
+            qry_laptime = pd.DataFrame(LapTime.objects.filter(race__circuit=circuit).values("race__year", "driver__fname","driver__lname", "mile_seconds"))
+            qry_laptime["driver"] = qry_laptime["driver__fname"] + ' ' + qry_laptime["driver__lname"]
+            qry_laptime = qry_laptime.drop(columns=['driver__fname', 'driver__lname'])
+            qry_laptime["mile_seconds"] = pd.to_datetime(qry_laptime['mile_seconds'], unit='ms').dt.strftime(
+                '%M:%S.%f').str[:-3]
+        except:
+            qry_laptime = pd.DataFrame()
+
+
+        fastest_laps_by_year = []
+
+        if not qry_laptime.empty:
+            fastest_laps = qry_laptime.iloc[qry_laptime.groupby('race__year')['mile_seconds'].idxmin()]
+            fastest_laps = fastest_laps.sort_values(by="race__year").reset_index(drop=True)
+            min_time = fastest_laps['mile_seconds'].min()
+
+
+
+            for index, row in fastest_laps.iterrows():
+                new_row = {
+                    'year': str(row['race__year']),
+                    'time': row['mile_seconds'],
+                    'driver': row['driver'],
+                }
+                if row['mile_seconds'] == min_time:
+                    new_row['record'] = "record"
+                fastest_laps_by_year.append(new_row)
+
+
         poles = pd.DataFrame(
             Result.objects.filter(race__circuit=circuit, grid=1).values("driver", "driver__lname", "race__circuit"))
 
@@ -64,10 +94,14 @@ class CircuitDetailView(DetailView):
                                                                                                               ascending=False)
         top_winners = top_winners.sort_values('wins', ascending=False)
 
+
+
         data = {"circuit": circuit,
+                "race_laps": len(qry_laptime),
                 "total_races": len(poles),
                 "different_poles": len(dif_poles),
                 "different_winners": len(top_winners),
+                "record_year": fastest_laps_by_year,
                 }
 
         return data
@@ -79,19 +113,16 @@ class CircuitDetailAPIView(APIView):
         circuit = Circuit.objects.get(pk=int(request.GET.get('circuit')))
         results_wins = pd.DataFrame(Result.objects.filter(race__circuit=circuit, position=1).values("driver__fname", "driver__lname", "race__year"))
         results_wins['driver_name'] = results_wins["driver__fname"] + ' ' + results_wins["driver__lname"]
-        start_year = results_wins['race__year'].min()
-        end_year = results_wins['race__year'].max()
         results_wins = results_wins.drop(columns=['race__year', 'driver__fname', 'driver__lname'])
-
         top_winners = results_wins.groupby("driver_name").value_counts().reset_index(name='wins').sort_values('wins', ascending=False)
         top_winners = top_winners.sort_values('wins', ascending=False)
 
         data = []
         labels = []
+
         for index, row in top_winners.iterrows():
             labels.append(row["driver_name"])
             data.append(row["wins"])
-
 
 
         data = {

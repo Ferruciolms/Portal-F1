@@ -58,6 +58,10 @@
                     <h2 style="color: #fff;">{{object.different_winners}}</h2>
                     <p>Drivers have won this Gran Prix</p>
                 </div>
+                <div class="info-card">
+                    <h2 style="color: #fff;">{{object.race_laps}}</h2>
+                    <p>laps recorded in racing on this circuit </p>
+                </div>
             </div>
         </div>
         <div class="row justify-content-center">
@@ -88,6 +92,49 @@
             </div>
         </div>
     </div>
+    <div class="row-col-md-12">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="text-5xl font-extrabold dark:text-white">Fastest Lap <small
+                            class="ms-2 font-semibold text-gray-500 dark:text-gray-400">By Year</small></h3>
+                </div>
+                <div class="card-body">
+                    <div class="card-body table-bfamily-style">
+                        <div class="table-responsive">
+                            <table class="table table-striped" id="tabela-listar-driver">
+                                <thead>
+                                <tr>
+
+                                    <th>Driver</th>
+                                    <th>Fastest Lap</th>
+                                    <th>Season</th>
+
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for fastest_lap in object.record_year %}
+                                 <tr {% if fastest_lap.record%} class="highlighted"{% endif %} id="record">
+
+                                    <td class="column2">{{ fastest_lap.driver }}</td>
+                                    <td class="column3">{{fastest_lap.time}}</td>
+                                    <td class="column4">{{ fastest_lap.year }}</td>
+
+                                </tr>
+                                {% empty %}
+                                <tr>
+                                    <td colspan="5" align="center">No Laps found.</td>
+                                </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
 </section>
 {% endblock body_system %}
