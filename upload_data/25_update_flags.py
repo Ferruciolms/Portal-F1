@@ -8,7 +8,7 @@ df = pd.read_csv("./data/" + file, header=0, delimiter=";")
 
 db = psycopg2.connect(user='postgres',
                       password='123',
-                      database='portal_f1_new',
+                      database='portal_f1',
                       host='localhost',
                       port='5432',
                       options="-c search_path=" + 'public')
