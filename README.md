@@ -86,16 +86,111 @@ Para todas as tabelas foi configurada uma chave primária única denominada id.
 Para criar a aplicação foram utilizados dois templates:
 
 - Template para a sessão de blog: [CARSERV FREE CSS TEMPLATE](https://www.free-css.com/free-css-templates/page291/carserv)
-- Template para a sessão de dasjboards: [Gradiente Able](https://django-gradient-pro.onrender.com/#)
+- Template para a sessão de dashboards: [Gradiente Able](https://django-gradient-pro.onrender.com/#)
 
 No desenvolvimento da aplicação foram aplicadas as seguintes etapas:
 1. Criação dos models com base na modelagem do banco.
 2. Criação dos scripts para salvar os dados no banco.
-3. Definição das views.
+3. Definição das views de index, drivers e circuits
 4. Criação das interfaces.
+5. Elaboração das estátisticas.
+6. API para os gráficos.
+7. Edição da página home.
+8. Criação de outras páginas para desenvolvimento futuro
+   - Galeria
+   - Circuitos
+   - Contatos
+
+### Terceira etapa: Definição da home page 
+![blog f1 site.png](upload_images_project/blog f1 site.png)
+1. Nesta primeira parte página tem um carrossel principal que leva á outras páginas
+   - Analytics que é a nossa parte de dashboard e estátisticas
+   - Photo Galery onde pretendo preencher com fotos dos carros de várias gerações(ATIVA MAS EM CONSTRUÇÃO)
+   - Circuits onde quero trazer informações dos circuitos como traçados, distância e outras infos(ATIVA MAS EM COSNTRUÇÃO)
+   
+   - ![page in construction.gif](upload_images_project/page in construction.gif)
+
+2. Inseri uma sessão com alguns contadores sobre a história da Fórmula 1 até o périodo atual do meu banco de dados.
+    - Total de Corridas
+    - Total de Equipes
+    - Total de Circuitos
+    - Todos os pilotos registrados
+    - Quantas equipes foram campeãs de construtores
+    - Quanto pilotos se tornaram campeões
 
 
+![blog fact bar.png](upload_images_project/blog fact bar.png)
 
+3. Editei a parte do footer com minhas informações.
+
+### Quarta etapa: Página Analytics
+
+> Página inicial
+1. Defini uma página de ínicio para acessar as estatísticas por um menu lateral e uma parte central com carrossel até então com sessões de pilotos e circuitos.
+
+![Analytics home page.png](upload_images_project/Analytics home page.png)
+
+> Listagem De Pilotos
+2. Criei a parte de pilotos que começa com uma listagem com nome, code number, número que o piloto usa, período de carreira, nacionalidade e detalhes que é onde se acessa o dashboard.
+A página conta com um filtro por nome e sobrenome do piloto e paginação.
+
+![Driver List.png](upload_images_project/Driver List.png) 
+
+> Dashboard Co Piloto
+
+![Driver Detail.png](upload_images_project%2FDriver%20Detail.png)
+
+### Estátisticas 
+- Total de corridas e total de corridas completadas
+- Poles na carreira
+- Total de de chegadas em primeiro, segundo e terceiro lugares
+
+### Gráficos
+- ##### Results By Season 
+    Acessa o banco atráves de uma api e estrutura um dataset com o resultados importantes agruprados por temporada visualizando toda a carreira do piloto.
+    ![Gráfico 1.png](upload_images_project%2FGr%C3%A1fico%201.png)
+- #### Points By Season
+    Acessa os registros de resultados e soma o total de pontos separando por ano, exibindo toda a carreira
+  
+    ![Gráfico 2.png](upload_images_project%2FGr%C3%A1fico%202.png)
+### Melhores voltas de cada circuito
+    
+Cada registro se refere ao menor tempo registrado pelo piloto em determinado circuito, trazendo o ano em que marcou essa volta, o tempo e o circuito.
+![Driver best laps.png](upload_images_project/Driver best laps.png)
+
+> Listagem de Circuitos
+
+_Adicionei um campo de cadastro de imagem na tabela circuito para adicionar as bandeiras dos países referente aos circuitos, para que pudesse acessar nessa tabela._
+ 
+A listagem recebe todos os circuitos registrados ordenados desta vez por ordem alfabética seguindo o mesmo modelo da listagem de pilotos.
+
+![Circuit List.png](upload_images_project/Circuit List.png)
+
+> Dashboard Do Circuito
+
+![Circuit Dashboard.png](upload_images_project/Circuit Dashboard.png)
+
+### Estátísticas
+- Total de GPs realizados no circuito
+- Quantos pilotos diferentes sairam na pole position
+- Quantos pilotos diferentas ganharam esse GP
+- Total de voltas registradas em corrida
+
+### Gráficos
+
+- #### Top Winners
+    A API consulta dentro da tabela resultados e separando por circuito o todos os pilotos vencedores de cada GP, Somando a contagem de vitórias cada vez que o piloto se repete. O Gráfico exibe do maior para o menor a contagem de todos os pilotos com vitórias do circuito
+
+![Gráfico 3.png](upload_images_project%2FGr%C3%A1fico%203.png)
+
+- #### DNFs By Year
+    Esta API acessa os resultados de corridas que não fazem parte de uma lista criada not_dnf_status trazendo assim apenas os registro que contem status de abandono.
+    Estes abandonos são agrupados por GP que ocorre geralmente uma vez a cada ano exibe no gráfico todas as vezes que o GP ocorreu.
+
+![Grafico 4.png](upload_images_project/Grafico 4.png)
+### Fastest Laps By year
+Nesta tabela eu busco o piloto que fez a melhor volta registrada no circuito em cada ano. A volta com o menor tempo de todos recebe um status de record_lap e é pintada de roxo.
+     ![Race fastest lap.png](upload_images_project%2FRace%20fastest%20lap.png)
 > Diretório
 
 A estrutura do código segue
@@ -105,7 +200,7 @@ bash
 < PROJECT ROOT >
    |
    |-- portal_f1/                            # Raiz do projeto
-   |    |-- applications/                   # Dentro dessa pasta estão as aplicações do Django
+   |    |-- applications/                   # Dentro dessa pasta estão as aplicações Analytics e Blog do Django
    |    |-- core/
    |        |-- wsgi.py                     # Starta a aplicação em produção
    |        |-- urls.py                     # Define as urls permitidas
