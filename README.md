@@ -108,7 +108,7 @@ No desenvolvimento da aplicação foram aplicadas as seguintes etapas:
    - Photo Galery onde pretendo preencher com fotos dos carros de várias gerações(ATIVA MAS EM CONSTRUÇÃO)
    - Circuits onde quero trazer informações dos circuitos como traçados, distância e outras infos(ATIVA MAS EM COSNTRUÇÃO)
    
-   - ![page in construction.gif](upload_images_project%2Fpage%20in%20construction.gif)![page in construction.gif](upload_images_project/page in construction.gif)
+   - ![page in construction.gif](upload_images_project%2Fpage%20in%20construction.gif)
 
 2. Inseri uma sessão com alguns contadores sobre a história da Fórmula 1 até o périodo atual do meu banco de dados.
     - Total de Corridas
