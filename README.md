@@ -102,13 +102,13 @@ No desenvolvimento da aplicação foram aplicadas as seguintes etapas:
    - Contatos
 
 ### Terceira etapa: Definição da home page 
-![blog f1 site.png](upload_images_project/blog f1 site.png)
+![blog f1 site.png](upload_images_project%2Fblog%20f1%20site.png)
 1. Nesta primeira parte página tem um carrossel principal que leva á outras páginas
    - Analytics que é a nossa parte de dashboard e estátisticas
    - Photo Galery onde pretendo preencher com fotos dos carros de várias gerações(ATIVA MAS EM CONSTRUÇÃO)
    - Circuits onde quero trazer informações dos circuitos como traçados, distância e outras infos(ATIVA MAS EM COSNTRUÇÃO)
    
-   - ![page in construction.gif](upload_images_project/page in construction.gif)
+   - ![page in construction.gif](upload_images_project%2Fpage%20in%20construction.gif)![page in construction.gif](upload_images_project/page in construction.gif)
 
 2. Inseri uma sessão com alguns contadores sobre a história da Fórmula 1 até o périodo atual do meu banco de dados.
     - Total de Corridas
@@ -119,7 +119,7 @@ No desenvolvimento da aplicação foram aplicadas as seguintes etapas:
     - Quanto pilotos se tornaram campeões
 
 
-![blog fact bar.png](upload_images_project/blog fact bar.png)
+![blog fact bar.png](upload_images_project%2Fblog%20fact%20bar.png)
 
 3. Editei a parte do footer com minhas informações.
 
@@ -128,13 +128,12 @@ No desenvolvimento da aplicação foram aplicadas as seguintes etapas:
 > Página inicial
 1. Defini uma página de ínicio para acessar as estatísticas por um menu lateral e uma parte central com carrossel até então com sessões de pilotos e circuitos.
 
-![Analytics home page.png](upload_images_project/Analytics home page.png)
-
+![Analytics home page.png](upload_images_project%2FAnalytics%20home%20page.png)
 > Listagem De Pilotos
 2. Criei a parte de pilotos que começa com uma listagem com nome, code number, número que o piloto usa, período de carreira, nacionalidade e detalhes que é onde se acessa o dashboard.
 A página conta com um filtro por nome e sobrenome do piloto e paginação.
 
-![Driver List.png](upload_images_project/Driver List.png) 
+![Driver List.png](upload_images_project%2FDriver%20List.png)
 
 > Dashboard Co Piloto
 
@@ -156,7 +155,7 @@ A página conta com um filtro por nome e sobrenome do piloto e paginação.
 ### Melhores voltas de cada circuito
     
 Cada registro se refere ao menor tempo registrado pelo piloto em determinado circuito, trazendo o ano em que marcou essa volta, o tempo e o circuito.
-![Driver best laps.png](upload_images_project/Driver best laps.png)
+![Driver best laps.png](upload_images_project%2FDriver%20best%20laps.png)
 
 > Listagem de Circuitos
 
@@ -164,11 +163,11 @@ _Adicionei um campo de cadastro de imagem na tabela circuito para adicionar as b
  
 A listagem recebe todos os circuitos registrados ordenados desta vez por ordem alfabética seguindo o mesmo modelo da listagem de pilotos.
 
-![Circuit List.png](upload_images_project/Circuit List.png)
+![Circuit List.png](upload_images_project%2FCircuit%20List.png)
 
 > Dashboard Do Circuito
 
-![Circuit Dashboard.png](upload_images_project/Circuit Dashboard.png)
+![Circuit Dashboard.png](upload_images_project%2FCircuit%20Dashboard.png)
 
 ### Estátísticas
 - Total de GPs realizados no circuito
@@ -187,7 +186,7 @@ A listagem recebe todos os circuitos registrados ordenados desta vez por ordem a
     Esta API acessa os resultados de corridas que não fazem parte de uma lista criada not_dnf_status trazendo assim apenas os registro que contem status de abandono.
     Estes abandonos são agrupados por GP que ocorre geralmente uma vez a cada ano exibe no gráfico todas as vezes que o GP ocorreu.
 
-![Grafico 4.png](upload_images_project/Grafico 4.png)
+![Grafico 4.png](upload_images_project%2FGrafico%204.png)
 ### Fastest Laps By year
 Nesta tabela eu busco o piloto que fez a melhor volta registrada no circuito em cada ano. A volta com o menor tempo de todos recebe um status de record_lap e é pintada de roxo.
      ![Race fastest lap.png](upload_images_project%2FRace%20fastest%20lap.png)
