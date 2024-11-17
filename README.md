@@ -1,51 +1,47 @@
 # Portal F1
 
-Esse projeto tem como objetivo o aperfeiçoamento do desenvolvimento de uma aplicação Full Stack partindo dos dados brutos
-até a interface do usuário. Os dados utilizados provém de uma base com dados reais da Fórmula 1 do seu início até o ano de 2023.
+
+O Portal F1 é uma aplicação Full Stack que combina análise de dados avançada e visualizações dinâmicas para explorar a história da Fórmula 1. Utilizando dados reais e uma interface interativa, o projeto permite aos usuários mergulhar em estatísticas, gráficos e curiosidades da principal categoria do automobilismo mundial.
+
+Este projeto abrange desde a coleta e processamento de dados até o desenvolvimento completo de uma interface amigável para explorar estatísticas históricas. É uma solução que integra **tecnologias de back-end robustas** e **design responsivo**, oferecendo insights detalhados sobre corridas, pilotos e circuitos.
+
+---
+## Índice
+1. [Introdução](#introdução)
+2. [Etapas Realizadas](#etapas-realizadas)
+3. [Estrutura do Projeto](#estrutura-do-projeto)
+4. [Galeria de Demonstrações](#galeria-de-demonstrações)
+5. [Credenciais e Configuração](#credenciais-e-configuração)
+6. [Próximos Passos e Backlog](#próximos-passos-e-backlog)
+7. [Agradecimentos e Créditos](#agradecimentos-e-créditos)
+
+## Etapas Realizadas
+
+### 1. Análise de Dados e Criação do Banco de Dados
 A base de dados utilizada se encontra no [Kaggle](https://www.kaggle.com/datasets/rohanrao/formula-1-world-championship-1950-2020)
 e possui as seguintes informações:
-
 - circuits - Todos os circuitos onde ocorreram um grande prêmio
-
 - constructor_results - Resultados de todos os construtores registrados
-
 - constructor_standings - Pontuação final do campeonato de construtores
-
 - constructors - Todas as equipes que ja foram registradas
-
 - driver_standings - Pontuação final do campeonato de pilotos
-
 - drivers - Todos os pilotos que correram na categoria
-
 - lap_times - Tempos de voltas registrados
-
 - pit_stops - Registro das paradas no pit stop
-
 - qualifying - Registro das sessões de qualificação
-
 - races - Informaçoes de todas as corridas registradas
-
 - results - Resultado geral das corridas
-
 - seasons - Registro de todos os anos que houveram campeonato
-
 - sprint_results - Resultado geral das corridas sprint
-
 - status - Status final da corrida
 
-> Etapas realizadas
 
-### Primeira etapa: Análise de dados e criação do banco
-Na análise de dados foi identificado que existem alguns dados nulos e após análise
-foi identificado que existem dados nulos porque estão faltando ou porque não existem, como por exemplo, 
-os resultados de Q2 e Q3 pois todos os pilotos participam do Q1 mas no Q2 e Q3 a quantidade diminui.
-Para tratar os dados nulos foram aplicados duas soluções:
 
-- Dados faltantes: Foram preenchidos com valores brancos(0 pra numerais e espaço para strings)
-- Dados inexistentes: Foram criadas tabelas secundárias com chave estrangeira para tabela principal.
-  - Exemplo:
-    - Arquivo qualifying.csv o registro com qualifyingid igual a 40 só possui valor para o q1.
-         - Tabela qualifying 
+1. Analisamos os dados do Kaggle e identificamos registros nulos.
+2. Implementamos as seguintes estratégias para tratar esses dados:
+   - **Dados faltantes** foram preenchidos com valores padrão (`0` para números e espaço em branco para strings).
+   - **Dados inexistentes** foram reorganizados em tabelas auxiliares para evitar inconsistências. Por exemplo:
+     - Dividimos os tempos de qualificação (`q1`, `q2`, `q3`) em tabelas específicas, com uma relação direta com a tabela principal. 
       
         | qualifyingid | ... | q1  | q2 | q3  |
         |--------------|-----|-----|----|-----|
@@ -81,115 +77,104 @@ Para tratar os dados nulos foram aplicados duas soluções:
 Para todas as tabelas foi configurada uma chave primária única denominada id.
 
 
-### Segunda etapa: Criação da aplicação com Django
+### 2. Criação da Aplicação com Django
+#### Banco de Dados
+- Modelagem de todas as tabelas com **chaves primárias e estrangeiras**.
+- Scripts para importar os dados do CSV para o PostgreSQL.
 
-Para criar a aplicação foram utilizados dois templates:
+#### Backend
+- Implementamos as principais views para:
+  - Exibir listas (pilotos, circuitos).
+  - Mostrar dashboards detalhados de estatísticas.
+- APIs configuradas para fornecer dados para gráficos.
 
+#### Frontend
+- Utilizamos templates HTML com CSS customizado para criar:
+  - Home Page com carrossel e estatísticas.
+  - Páginas detalhadas de pilotos e circuitos.
+  - Seções dinâmicas, como dashboards interativos.
+  
 - Template para a sessão de blog: [CARSERV FREE CSS TEMPLATE](https://www.free-css.com/free-css-templates/page291/carserv)
 - Template para a sessão de dashboards: [Gradiente Able](https://django-gradient-pro.onrender.com/#)
 
-No desenvolvimento da aplicação foram aplicadas as seguintes etapas:
-1. Criação dos models com base na modelagem do banco.
-2. Criação dos scripts para salvar os dados no banco.
-3. Definição das views de index, drivers e circuits
-4. Criação das interfaces.
-5. Elaboração das estátisticas.
-6. API para os gráficos.
-7. Edição da página home.
-8. Criação de outras páginas para desenvolvimento futuro
-   - Galeria
-   - Circuitos
-   - Contatos
+## Galeria de Demonstrações
 
-### Terceira etapa: Definição da home page 
-![blog f1 site.png](upload_images_project%2Fblog%20f1%20site.png)
-1. Nesta primeira parte página tem um carrossel principal que leva á outras páginas
-   - Analytics que é a nossa parte de dashboard e estátisticas
-   - Photo Galery onde pretendo preencher com fotos dos carros de várias gerações(ATIVA MAS EM CONSTRUÇÃO)
-   - Circuits onde quero trazer informações dos circuitos como traçados, distância e outras infos(ATIVA MAS EM COSNTRUÇÃO)
-   
-   - ![page in construction.gif](upload_images_project%2Fpage%20in%20construction.gif)
+### Home Page
+![Home Page com estatísticas e carrossel](upload_images_project%2Fblog%20f1%20site.png)
 
-2. Inseri uma sessão com alguns contadores sobre a história da Fórmula 1 até o périodo atual do meu banco de dados.
-    - Total de Corridas
-    - Total de Equipes
-    - Total de Circuitos
-    - Todos os pilotos registrados
-    - Quantas equipes foram campeãs de construtores
-    - Quanto pilotos se tornaram campeões
+### Página Analytics
+#### Página Inicial
+![Página inicial do Analytics](upload_images_project%2FAnalytics%20home%20page.png)
 
+#### Listagem de Pilotos
+![Tabela de pilotos](upload_images_project%2FDriver%20List.png)
 
-![blog fact bar.png](upload_images_project%2Fblog%20fact%20bar.png)
+#### Dashboard de Piloto
+![Dashboard de um piloto](upload_images_project%2FDriver%20Detail.png)
 
-3. Editei a parte do footer com minhas informações.
+#### Gráficos
+- **Resultados por Temporada**
+  ![Gráfico 1](upload_images_project%2FGr%C3%A1fico%201.png)
 
-### Quarta etapa: Página Analytics
+- **Pontos por Temporada**
+  ![Gráfico 2](upload_images_project%2FGr%C3%A1fico%202.png)
 
-> Página inicial
-1. Defini uma página de ínicio para acessar as estatísticas por um menu lateral e uma parte central com carrossel até então com sessões de pilotos e circuitos.
+#### Listagem de Circuitos
+![Tabela de circuitos](upload_images_project%2FCircuit%20List.png)
 
-![Analytics home page.png](upload_images_project%2FAnalytics%20home%20page.png)
-> Listagem De Pilotos
-2. Criei a parte de pilotos que começa com uma listagem com nome, code number, número que o piloto usa, período de carreira, nacionalidade e detalhes que é onde se acessa o dashboard.
-A página conta com um filtro por nome e sobrenome do piloto e paginação.
+#### Dashboard de Circuito
+![Dashboard de circuito](upload_images_project%2FCircuit%20Dashboard.png)
 
-![Driver List.png](upload_images_project%2FDriver%20List.png)
+## Credenciais e Configuração
 
-> Dashboard Co Piloto
+1. **Criação do Arquivo `.env`:**  
+- Certifique-se de criar um arquivo `.env` na raiz do projeto. Inclua as variáveis necessárias, como:
+  ```
+    DEBUG=True
+    SECRET_KEY=sua-chave-secreta-aqui
+    SERVER=localhost
+    SERVER_2=127.0.0.1
+    SERVER_3=localhost
+    TZ=America/Sao_Paulo
+    NAME_DB=nome_do_banco
+    USER_DB=user_do_banco
+    PASSWORD_DB=sua_senha_do_user_do_banco
+    HOST_DB=localhost
+    PORT_DB=_escolha_sua_porta
+    SCHEMA_DB=public
+     ```
+2. **Instalação das Dependências:**  
+   - Rode o comando `pip install -r requirements.txt` para instalar as bibliotecas necessárias.
 
-![Driver Detail.png](upload_images_project%2FDriver%20Detail.png)
+3. **Migrações do Banco:**  
+   - Execute as migrações com `python manage.py migrate`.
 
-### Estátisticas 
-- Total de corridas e total de corridas completadas
-- Poles na carreira
-- Total de de chegadas em primeiro, segundo e terceiro lugares
+4. **Carga Inicial de Dados:**  
+   - Use os scripts disponíveis na pasta `upload_data` para popular o banco de dados.
 
-### Gráficos
-- ##### Results By Season 
-    Acessa o banco atráves de uma api e estrutura um dataset com o resultados importantes agruprados por temporada visualizando toda a carreira do piloto.
-    ![Gráfico 1.png](upload_images_project%2FGr%C3%A1fico%201.png)
-- #### Points By Season
-    Acessa os registros de resultados e soma o total de pontos separando por ano, exibindo toda a carreira
-  
-    ![Gráfico 2.png](upload_images_project%2FGr%C3%A1fico%202.png)
-### Melhores voltas de cada circuito
-    
-Cada registro se refere ao menor tempo registrado pelo piloto em determinado circuito, trazendo o ano em que marcou essa volta, o tempo e o circuito.
-![Driver best laps.png](upload_images_project%2FDriver%20best%20laps.png)
+## Próximos Passos e Backlog
 
-> Listagem de Circuitos
+- Finalizar a seção **Photo Gallery** e **Circuits**, adicionando imagens de carros históricos, informações das pistas e traçados.
+- Expandir os gráficos do **dashboard de pilotos** para incluir métricas adicionais, como:
+  - Desempenho em qualificações.
+- Melhorar a seção de circuitos com:
+  - Gráficos de desempenho por equipe em cada circuito.
+- Criar uma funcionalidade de **comparação direta** entre dois pilotos ou equipes.
+- Criar listagem de corridas mostrando os resultados e informações gerais
 
-_Adicionei um campo de cadastro de imagem na tabela circuito para adicionar as bandeiras dos países referente aos circuitos, para que pudesse acessar nessa tabela._
- 
-A listagem recebe todos os circuitos registrados ordenados desta vez por ordem alfabética seguindo o mesmo modelo da listagem de pilotos.
+## Agradecimentos e Créditos
 
-![Circuit List.png](upload_images_project%2FCircuit%20List.png)
+- **Base de Dados:**  
+  [Fórmula 1 World Championship Dataset no Kaggle](https://www.kaggle.com/datasets/rohanrao/formula-1-world-championship-1950-2020).
 
-> Dashboard Do Circuito
+- **Templates Utilizados:**  
+  - [CARSERV FREE CSS TEMPLATE](https://www.free-css.com/free-css-templates/page291/carserv)
+  - [Gradiente Able](https://django-gradient-pro.onrender.com/#).
 
-![Circuit Dashboard.png](upload_images_project%2FCircuit%20Dashboard.png)
-
-### Estátísticas
-- Total de GPs realizados no circuito
-- Quantos pilotos diferentes sairam na pole position
-- Quantos pilotos diferentas ganharam esse GP
-- Total de voltas registradas em corrida
-
-### Gráficos
-
-- #### Top Winners
-    A API consulta dentro da tabela resultados e separando por circuito o todos os pilotos vencedores de cada GP, Somando a contagem de vitórias cada vez que o piloto se repete. O Gráfico exibe do maior para o menor a contagem de todos os pilotos com vitórias do circuito
-
-![Gráfico 3.png](upload_images_project%2FGr%C3%A1fico%203.png)
-
-- #### DNFs By Year
-    Esta API acessa os resultados de corridas que não fazem parte de uma lista criada not_dnf_status trazendo assim apenas os registro que contem status de abandono.
-    Estes abandonos são agrupados por GP que ocorre geralmente uma vez a cada ano exibe no gráfico todas as vezes que o GP ocorreu.
-
-![Grafico 4.png](upload_images_project%2FGrafico%204.png)
-### Fastest Laps By year
-Nesta tabela eu busco o piloto que fez a melhor volta registrada no circuito em cada ano. A volta com o menor tempo de todos recebe um status de record_lap e é pintada de roxo.
-     ![Race fastest lap.png](upload_images_project%2FRace%20fastest%20lap.png)
+- **Ferramentas:**  
+  - Python e Django para o back-end.
+  - PostgreSQL para o banco de dados.
+  - HTML/CSS/JavaScript para o front-end.
 > Diretório
 
 A estrutura do código segue
@@ -198,8 +183,18 @@ A estrutura do código segue
 bash
 < PROJECT ROOT >
    |
-   |-- portal_f1/                            # Raiz do projeto
+   |-- portal_f1/                           # Raiz do projeto
    |    |-- applications/                   # Dentro dessa pasta estão as aplicações Analytics e Blog do Django
+   |        |-- analytics/                  # Aplicação Analytics, com models, views , APIs e templates individuais
+                |-- filters                 # Filtros de pilotos e circuitos
+                |-- migrations              # Arquivos de alteração do banco de dados
+                |-- models                  # Pasta da definição dos bancos de dados                     
+                |-- static                  # Arquivos JavaScript das APIs dos gráficos
+                |-- templates               # Interfaces Django do Analytics
+                |-- views                   # Pasta onde define as lógicas das páginas analytics
+   |        |-- blog/                       # Aplicação da página do blog, com templates e views referentes
+                |-- templates               # Interfaces Django do Blog
+                |-- views                   # Pasta onde define as lógicas das páginas do blog
    |    |-- core/
    |        |-- wsgi.py                     # Starta a aplicação em produção
    |        |-- urls.py                     # Define as urls permitidas
@@ -216,6 +211,7 @@ bash
    |    |-- README.md                       # Arquivo de descrição
    |    |-- requirements.txt                # Bibliotecas necessárias
    |-- upload_data                          # Scripts que geram os arquivos csv para serem importados no postgreSQL
+   |-- upload_images_project                # Pasta de prints do site em funcionamento para o README
    |-- ************************************************************************
 ```
 <br />
