@@ -113,17 +113,39 @@ Para todas as tabelas foi configurada uma chave primária única denominada id.
 ![Dashboard de um piloto](upload_images_project%2FDriver%20Detail.png)
 
 #### Gráficos
-- **Resultados por Temporada**
-  ![Gráfico 1](upload_images_project%2FGr%C3%A1fico%201.png)
-
-- **Pontos por Temporada**
-  ![Gráfico 2](upload_images_project%2FGr%C3%A1fico%202.png)
+- ###### Results By Season 
+    Acessa o banco atráves de uma api e estrutura um dataset com o resultados importantes agruprados por temporada visualizando toda a carreira do piloto.
+    ![Gráfico 1.png](upload_images_project%2FGr%C3%A1fico%201.png)
+- ###### Points By Season
+    Acessa os registros de resultados e soma o total de pontos separando por ano, exibindo toda a carreira
+  
+    ![Gráfico 2.png](upload_images_project%2FGr%C3%A1fico%202.png)
+#### Melhores voltas de cada circuito
+    
+Cada registro se refere ao menor tempo registrado pelo piloto em determinado circuito, trazendo o ano em que marcou essa volta, o tempo e o circuito.
+![Driver best laps.png](upload_images_project%2FDriver%20best%20laps.png)
 
 #### Listagem de Circuitos
 ![Tabela de circuitos](upload_images_project%2FCircuit%20List.png)
 
 #### Dashboard de Circuito
 ![Dashboard de circuito](upload_images_project%2FCircuit%20Dashboard.png)
+
+#### Gráficos
+
+- ##### Top Winners
+    A API consulta dentro da tabela resultados e separando por circuito o todos os pilotos vencedores de cada GP, Somando a contagem de vitórias cada vez que o piloto se repete. O Gráfico exibe do maior para o menor a contagem de todos os pilotos com vitórias do circuito
+
+![Gráfico 3.png](upload_images_project%2FGr%C3%A1fico%203.png)
+
+- ##### DNFs By Year
+    Esta API acessa os resultados de corridas que não fazem parte de uma lista criada not_dnf_status trazendo assim apenas os registro que contem status de abandono.
+    Estes abandonos são agrupados por GP que ocorre geralmente uma vez a cada ano exibe no gráfico todas as vezes que o GP ocorreu.
+
+![Grafico 4.png](upload_images_project%2FGrafico%204.png)
+### Fastest Laps By year
+Nesta tabela eu busco o piloto que fez a melhor volta registrada no circuito em cada ano. A volta com o menor tempo de todos recebe um status de record_lap e é pintada de roxo.
+     ![Race fastest lap.png](upload_images_project%2FRace%20fastest%20lap.png)
 
 ## Credenciais e Configuração
 
