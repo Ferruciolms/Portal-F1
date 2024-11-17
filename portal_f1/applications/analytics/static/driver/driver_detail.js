@@ -23,7 +23,7 @@ $(document).ready(function() {
 
                               year  = 1900 + date.getYear();
 
-                              return 'Poles in year - '+year
+                              return 'Results in '+year +' season'
                             },
                             label: function(context) {
                                 let label = context.dataset.label || '';
@@ -31,7 +31,7 @@ $(document).ready(function() {
                                     label += ': ';
                                 }
                                 if (context.parsed.y !== null) {
-                                    label += context.raw.y.toFixed(0) + " - Pole(s)";
+                                    label += context.raw.y.toFixed(0);
                                     label = label.replace(".", ",")
                                 }
 
@@ -90,7 +90,7 @@ $(document).ready(function() {
                         fill: false,
                         cubicInterpolationMode: 'monotone',
                         tension: 0.4,
-                        borderColor: data.color[i],
+                        borderColor: data.border[i],
                         backgroundColor: data.color[i],
                         label: data.labels[i],
                         data: data.data[i],

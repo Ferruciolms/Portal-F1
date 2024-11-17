@@ -13,8 +13,8 @@ $(document).ready(function() {
                 fill: true,
                 cubicInterpolationMode: 'default',
                 tension: 0.4,
-                borderColor: 'rgba(255, 99, 71, 0.5)',
-                backgroundColor: 'rgba(255, 99, 71, 0.5)',
+                borderColor: 'rgba(182,0,0,0.6)',
+                backgroundColor: 'rgba(255,0,0,0.6)',
                 }
             ]
 

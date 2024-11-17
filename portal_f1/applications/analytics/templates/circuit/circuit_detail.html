@@ -40,86 +40,101 @@
                 </div>
             </div>
         </div>
-    </div>
 
-    <!-- Menu Reversivo end -->
-    <div class="card-block">
-        <div class="container">
-            <div class="info-cards">
-                <div class="info-card">
-                    <h2 style="color: #fff;">{{object.total_races}}</h2>
-                    <p>Total GPs in this circuit</p>
-                </div>
-                <div class="info-card">
-                    <h2 style="color: #fff;">{{object.different_poles}}</h2>
-                    <p>Different drivers on Pole Position</p>
-                </div>
-                <div class="info-card">
-                    <h2 style="color: #fff;">{{object.different_winners}}</h2>
-                    <p>Drivers have won this Gran Prix</p>
-                </div>
-                <div class="info-card">
-                    <h2 style="color: #fff;">{{object.race_laps}}</h2>
-                    <p>laps recorded in racing on this circuit </p>
-                </div>
-            </div>
-        </div>
+
+        <!-- Menu Reversivo end -->
+        <!-- general stats -->
         <div class="row justify-content-center">
-            <div class="row col-md-12">
-                <div class="col-md-6">
-                    <div class="card">
-                        <div class="card-header">
-                            <h3 class="text-5xl font-extrabold dark:text-white">Top <small
-                                    class="ms-2 font-semibold text-gray-500 dark:text-gray-400">Winners</small></h3>
-                        </div>
-                        <div class="card-block" style="padding-top: 0px;">
-                            <canvas id="top_wins"></canvas>
-                        </div>
+            <div class="col-md-3">
+                <div class="card bg-c-red order-card">
+                    <div class="card-body text-center">
+                        <h2 class="text-white">{{object.total_races}}</h2>
+                        <p>Total GPs in this circuit</p>
                     </div>
                 </div>
-                <div class="col-md-6">
-                    <div class="card">
-                        <div class="card-header">
-                            <h3 class="text-5xl font-extrabold dark:text-white">Circuit <small
-                                    class="ms-2 font-semibold text-gray-500 dark:text-gray-400">DNFs</small></h3>
-                        </div>
-                        <div class="card-block" style="padding-top: 0px;">
-                            <canvas id="circuit_dnfs"></canvas>
-                        </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card bg-c-red order-card">
+                    <div class="card-body text-center">
+                        <h2 class="text-white">{{object.different_poles}}</h2>
+                        <p>Different drivers started on Pole Position</p>
                     </div>
                 </div>
-
+            </div>
+            <div class="col-md-3">
+                <div class="card bg-c-red order-card">
+                    <div class="card-body text-center">
+                        <h2 class="text-white">{{object.different_winners}}</h2>
+                        <p>Drivers have won this Gran Prix</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card bg-c-red order-card">
+                    <div class="card-body text-center">
+                        <h2 class="text-white">{{object.race_laps}}</h2>
+                        <p>Laps recorded in racing on this circuit</p>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="row-col-md-12">
+
+
+
+    <!-- general stats end -->
+
+    <div class="row ">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="text-5xl font-extrabold dark:text-white">Top <small
+                                class="ms-2 font-semibold text-gray-500 dark:text-gray-400">Winners</small></h3>
+                    </div>
+                    <div class="card-block" style="padding-top: 0px;">
+                        <canvas id="top_wins"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="text-5xl font-extrabold dark:text-white">Circuit <small
+                                class="ms-2 font-semibold text-gray-500 dark:text-gray-400">DNFs</small></h3>
+                    </div>
+                    <div class="card-block" style="padding-top: 0px;">
+                        <canvas id="circuit_dnfs"></canvas>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+    <div class="row justify-content-center">
         <div class="col-sm-12">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="text-5xl font-extrabold dark:text-white">Fastest Lap <small
+                    <h3 class="text-5xl font-extrabold dark:text-white">Race Fastest Lap <small
                             class="ms-2 font-semibold text-gray-500 dark:text-gray-400">By Year</small></h3>
                 </div>
                 <div class="card-body">
                     <div class="card-body table-bfamily-style">
-                        <div class="table-responsive">
+                        <div class="table-responsive" style="max-height: 500px; overflow-y: auto;">
+                            <!-- Altura máxima para 10 registros -->
                             <table class="table table-striped" id="tabela-listar-driver">
                                 <thead>
                                 <tr>
-
                                     <th>Driver</th>
                                     <th>Fastest Lap</th>
                                     <th>Season</th>
-
                                 </tr>
                                 </thead>
                                 <tbody>
                                 {% for fastest_lap in object.record_year %}
-                                 <tr {% if fastest_lap.record%} class="highlighted"{% endif %} id="record">
-
+                                <tr {% if fastest_lap.record %} class="highlighted" {% endif %} id="record">
                                     <td class="column2">{{ fastest_lap.driver }}</td>
                                     <td class="column3">{{fastest_lap.time}}</td>
                                     <td class="column4">{{ fastest_lap.year }}</td>
-
                                 </tr>
                                 {% empty %}
                                 <tr>
@@ -133,6 +148,7 @@
                 </div>
             </div>
         </div>
+    </div>
     </div>
 
 

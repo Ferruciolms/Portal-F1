@@ -19757,7 +19757,7 @@ pre[class*=language-]:before {
 }
 
 .bg-c-silver {
-     background: linear-gradient(to bottom, #e8e8e8 0%,#999999 50%,#999999 51%,#c0c0c0 100%);
+    background: radial-gradient(circle, rgba(204,204,204,1) 30%, rgba(133,133,133,1) 100%)
 
 
 }
@@ -19771,7 +19771,7 @@ pre[class*=language-]:before {
 }
 
 .bg-c-gold {
-    background: linear-gradient(180deg,  #fceabb 0%,#fccd4d 50%,#f8b500 51%,#fbdf93 100%);
+    background: radial-gradient(circle, rgba(255,207,80,1) 30%, rgba(194,142,0,1) 100%);
 
 }
 
@@ -19784,7 +19784,7 @@ pre[class*=language-]:before {
 }
 
 .bg-c-bronze {
-     background: linear-gradient(to bottom,  rgba(239,166,98,1) 0%,rgba(204,95,0,1) 57%,rgba(204,95,0,1) 58%,rgba(221,150,84,1) 100%);
+    background: radial-gradient(circle, rgba(255,127,0,1) 30%, rgba(177,90,1,1) 100%);
 
 
 }
@@ -19799,8 +19799,7 @@ pre[class*=language-]:before {
 
 
 .bg-c-red {
-     background: linear-gradient(to bottom,  rgba(248,80,50,1) 0%,rgba(241,111,92,1) 50%,rgba(246,41,12,1) 51%,rgba(240,47,23,1) 71%,rgba(231,56,39,1) 100%);
-
+    background: radial-gradient(circle, rgba(255,0,0,1) 0%, rgba(182,0,0,1) 100%);
 }
 
 .text-c-red {
@@ -22759,7 +22758,7 @@ pre[class*=language-]:before {
 }
 
 .pcoded-header.header-blue {
-    background:  linear-gradient(41deg, rgba(140,6,6,1) 0%, rgba(255,0,0,1) 49%, rgba(255,0,0,1) 51%, rgba(130,5,5,1) 100%);
+    background: radial-gradient(circle, rgba(255,0,0,1) 0%, rgba(121,9,9,1) 100%);
 
 }
 
@@ -26636,85 +26635,17 @@ div.dtk-focus-alt table.dataTable tbody th.focus {
         flex: 1;
         margin: 0 10px;
         text-align: center;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
     }
 
     .info-card h2 {
         margin: 0;
-        font-size: 32px;
+        font-size: 30px;
     }
 
     .info-card p {
         margin: 5px 0 0;
         font-size: 16px;
-    }
-
-    .top-pilots {
-        text-align: center;
-        margin-bottom: 30px;
-    }
-
-    .top-pilots h3 {
-        font-size: 22px;
-        font-weight: 700;
-        color: #c00;
-        margin-bottom: 20px;
-    }
-
-    .pilots-list {
-        display: flex;
-        justify-content: center;
-        flex-wrap: wrap;
-    }
-
-    .pilot-card {
-        background-color: #fff;
-        border: 1px solid #ccc;
-        border-radius: 10px;
-        padding: 10px;
-        margin: 10px;
-        width: 150px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        text-align: center;
-    }
-
-    .pilot-card img {
-        border-radius: 50%;
-        width: 80px;
-        height: 80px;
-        margin-bottom: 10px;
-    }
-
-    .pilot-card h4 {
-        margin: 0;
-        font-size: 18px;
-        color: #c00;
-    }
-
-    .pilot-card p {
-        margin: 5px 0 0;
-        font-size: 14px;
-    }
-
-    /* Placeholder para os gráficos */
-    .charts-container {
-        display: flex;
-        justify-content: space-around;
-        margin-top: 40px;
-    }
-
-    .chart {
-        width: 45%;
-        height: 300px;
-        background-color: #eaeaea;
-        border-radius: 10px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        color: #999;
-        font-size: 16px;
-        text-align: center;
     }
 
 .img-flag-detail {

@@ -21,7 +21,7 @@ $(document).ready(function() {
                               const d = Date.parse(context[0].raw.x);
                               const date = new Date(d);
 
-                              year  = 1900 + date.getYear();
+                              year  = 1901 + date.getYear();
 
                               return  'Points in year - ' +year
                             },
@@ -87,11 +87,11 @@ $(document).ready(function() {
                         type: data.type[i],
                         borderWidth: 2,
                         pointStyle: 'circle',
-                        fill: false,
+                        fill: true,
                         cubicInterpolationMode: 'default',
                         tension: 0.4,
-                        borderColor: data.color,
-                        backgroundColor: data.color,
+                        borderColor: 'rgba(182,0,0,0.6)',
+                        backgroundColor: 'rgba(233,88,88,1)',
                         label: data.labels[i],
                         data: data.data[i],
 

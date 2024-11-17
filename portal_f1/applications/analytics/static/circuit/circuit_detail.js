@@ -8,8 +8,8 @@ $(document).ready(function() {
     datasets: [
 	    {
 	    label: 'Wins in circuit',
-        borderColor: 'rgba(255, 0, 0, 1)',
-        backgroundColor: 'rgba(255, 0, 0, 1)',
+        borderColor: 'rgba(182,0,0,1)',
+        backgroundColor: 'rgba(255,0,0,1)',
         cubicInterpolationMode: 'monotone',
         tension: 0.8,
 	    data: [],
@@ -18,14 +18,17 @@ $(document).ready(function() {
 		]
   },
   options: {
-  	scales: {
-    	yAxes: [{
-        ticks: {
-					reverse: false
-        }
-      }]
+  scales: {
+    y: {
+      beginAtZero: true,
+      ticks: {
+        stepSize: 1,
+        reverse: false
+      }
     }
   }
+}
+
 
     });
 

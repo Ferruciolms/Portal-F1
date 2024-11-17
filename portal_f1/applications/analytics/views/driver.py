@@ -95,6 +95,7 @@ class DriverSeasonDetailAPIView(APIView):
         results = pd.DataFrame(list(Result.objects.filter(driver=driver).values('points', 'race__year')))
         points = pd.DataFrame(results)
 
+
         start_year = results['race__year'].min()
         end_year = results['race__year'].max()
 
@@ -104,7 +105,7 @@ class DriverSeasonDetailAPIView(APIView):
             years.append(int(i))
 
         total_points = points.groupby('race__year')[['points']].sum().reset_index(names="race__year")
-
+        print(total_points)
         points_year = []
         for year in years:
             try:
@@ -241,13 +242,15 @@ class DriverDetailAPIView(APIView):
 
         labels = ['Poles', '1st', '2nd', '3rd', 'Races']
         type = ['line', 'line', 'line', 'line', 'bar']
-        color = ['red', '#daa520', '#c0c0c0', '#cd7f32', 'rgba(255, 99, 132, 0.2)']
+        color = ['red', '#daa520', '#c0c0c0', '#cd7f32', 'rgba(238,145,145,1)']
+        border = ['red', '#daa520', '#c0c0c0', '#cd7f32', 'rgba(255, 0, 0, 0.88)']
 
         data = {
             "data": data,
             "labels": labels,
             "color": color,
-            "type": type
+            "type": type,
+            "border": border
         }
 
         return Response(data)
