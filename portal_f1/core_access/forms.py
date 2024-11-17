@@ -5,8 +5,7 @@ from django.core.exceptions import ValidationError
 from django.contrib.auth.models import AbstractUser, Group
 from localflavor.br.forms import BRCPFField
 from core_access.validators.password_register_validator import Password_Register_Validator
-from captcha.fields import ReCaptchaField
-from captcha.widgets import ReCaptchaV2Invisible
+
 
 
 # usuário altera seu cadastro
@@ -216,10 +215,6 @@ class LoginForm(forms.Form):
             }
         )
     )
-
-    # captcha = ReCaptchaField(
-    #     widget=ReCaptchaV2Invisible()
-    # )
 
 class Password_ResetForm(forms.Form):
     email = forms.EmailField(

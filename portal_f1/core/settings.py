@@ -49,7 +49,7 @@ INSTALLED_APPS = ['django.contrib.admin', 'django.contrib.auth', 'django.contrib
 
                   # aplications adicionados
                   'core_pages.apps.CorePagesConfig', 'core_access.apps.CoreAccessConfig',
-                  'core_registration.apps.CoreRegistrationConfig', 'captcha', 'core_log.apps.CoreLogConfig',
+                  'core_registration.apps.CoreRegistrationConfig', 'core_log.apps.CoreLogConfig',
                   'analytics.apps.AnalyticsConfig', 'blog.apps.BlogConfig', 'svg'
 
                   ]
@@ -78,6 +78,7 @@ DATABASES = {'default': {'ENGINE': 'django.db.backends.postgresql_psycopg2', 'NA
                          'HOST': config('HOST_DB'), 'PORT': config('PORT_DB'),
                          'OPTIONS': {'isolation_level': psycopg2.extensions.ISOLATION_LEVEL_SERIALIZABLE,
                                      'options': '-c search_path=' + config('SCHEMA_DB')}}}
+
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
@@ -134,10 +135,6 @@ MESSAGE_TAGS = {messages.DEBUG: 'alert-secondary', messages.INFO: 'alert-info', 
                 messages.WARNING: 'alert-warning',
                 messages.ERROR: 'alert-danger', }
 
-# Google reCAPTCHA
-RECAPTCHA_PUBLIC_KEY = config('GOOGLE_RECAPTCHA_V2_PUBLIC_KEY')
-RECAPTCHA_PRIVATE_KEY = config('GOOGLE_RECAPTCHA_V2_PRIVATE_KEY')
-# SILENCED_SYSTEM_CHECKS = ['captcha.recaptcha_test_key_error']
 
 # Endereçamento de e-mail
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'

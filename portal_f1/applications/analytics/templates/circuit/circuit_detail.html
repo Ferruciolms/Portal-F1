@@ -1,0 +1,164 @@
+{% extends 'system/model_system.html' %}
+
+{% load static %}
+
+
+{% block title %} Details {{object.circuit.name}} {% endblock %}
+
+{% block stylesheets_extra %}
+{% endblock stylesheets_extra %}
+
+{% block body_system %}
+<section class="pcoded-main-container">
+    <div class="pcoded-content">
+
+        <!-- Menu Reversivo start -->
+        <div class="page-header">
+            <div class="page-block">
+                <div class="row align-items-center">
+                    <div class="col-md-10">
+                        <div class="row align-items-center">
+                            <div class="col-md-12">
+                                <div class="page-header-title">
+                                    <h5 class="m-b-10">{{object.circuit.name}} <small
+                                            class="ms-2 font-semibold text-gray-500 dark:text-gray-400"> -
+                                        {{ object.circuit.country }}
+                                    </small></h5>
+                                </div>
+                                <ul class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="{% url 'circuit_list' %}"><i
+                                            class="feather icon-home"></i></a></li>
+                                    <li class="breadcrumb-item">Circuit list</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <img class="img-flag-detail" src="{{ object.circuit.country_flag.url }}">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Menu Reversivo end -->
+        <!-- general stats -->
+        <div class="row justify-content-center">
+            <div class="col-md-3">
+                <div class="card bg-c-red order-card">
+                    <div class="card-body text-center">
+                        <h2 class="text-white">{{object.total_races}}</h2>
+                        <p>Total GPs in this circuit</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card bg-c-red order-card">
+                    <div class="card-body text-center">
+                        <h2 class="text-white">{{object.different_poles}}</h2>
+                        <p>Different drivers started on Pole Position</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card bg-c-red order-card">
+                    <div class="card-body text-center">
+                        <h2 class="text-white">{{object.different_winners}}</h2>
+                        <p>Drivers have won this Gran Prix</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card bg-c-red order-card">
+                    <div class="card-body text-center">
+                        <h2 class="text-white">{{object.race_laps}}</h2>
+                        <p>Laps recorded in racing on this circuit</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+    <!-- general stats end -->
+
+    <div class="row ">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="text-5xl font-extrabold dark:text-white">Top <small
+                                class="ms-2 font-semibold text-gray-500 dark:text-gray-400">Winners</small></h3>
+                    </div>
+                    <div class="card-block" style="padding-top: 0px;">
+                        <canvas id="top_wins"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="text-5xl font-extrabold dark:text-white">Circuit <small
+                                class="ms-2 font-semibold text-gray-500 dark:text-gray-400">DNFs</small></h3>
+                    </div>
+                    <div class="card-block" style="padding-top: 0px;">
+                        <canvas id="circuit_dnfs"></canvas>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+    <div class="row justify-content-center">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="text-5xl font-extrabold dark:text-white">Race Fastest Lap <small
+                            class="ms-2 font-semibold text-gray-500 dark:text-gray-400">By Year</small></h3>
+                </div>
+                <div class="card-body">
+                    <div class="card-body table-bfamily-style">
+                        <div class="table-responsive" style="max-height: 500px; overflow-y: auto;">
+                            <!-- Altura máxima para 10 registros -->
+                            <table class="table table-striped" id="tabela-listar-driver">
+                                <thead>
+                                <tr>
+                                    <th>Driver</th>
+                                    <th>Fastest Lap</th>
+                                    <th>Season</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for fastest_lap in object.record_year %}
+                                <tr {% if fastest_lap.record %} class="highlighted" {% endif %} id="record">
+                                    <td class="column2">{{ fastest_lap.driver }}</td>
+                                    <td class="column3">{{fastest_lap.time}}</td>
+                                    <td class="column4">{{ fastest_lap.year }}</td>
+                                </tr>
+                                {% empty %}
+                                <tr>
+                                    <td colspan="5" align="center">No Laps found.</td>
+                                </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+
+</section>
+{% endblock body_system %}
+
+Specific Page JS goes HERE
+
+{% block script_system %}
+<script> circuit={{object.circuit.id}} </script>
+<script src="{% static 'circuit/circuit_detail.js' %}"></script>
+<script src="{% static 'circuit/circuit_detail_dnf.js' %}"></script>
+{% endblock script_system %}

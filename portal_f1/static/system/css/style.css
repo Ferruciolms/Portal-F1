@@ -19757,7 +19757,7 @@ pre[class*=language-]:before {
 }
 
 .bg-c-silver {
-     background: linear-gradient(to bottom, #e8e8e8 0%,#999999 50%,#999999 51%,#c0c0c0 100%);
+    background: radial-gradient(circle, rgba(204,204,204,1) 30%, rgba(133,133,133,1) 100%)
 
 
 }
@@ -19771,7 +19771,7 @@ pre[class*=language-]:before {
 }
 
 .bg-c-gold {
-    background: linear-gradient(180deg,  #fceabb 0%,#fccd4d 50%,#f8b500 51%,#fbdf93 100%);
+    background: radial-gradient(circle, rgba(255,207,80,1) 30%, rgba(194,142,0,1) 100%);
 
 }
 
@@ -19784,7 +19784,7 @@ pre[class*=language-]:before {
 }
 
 .bg-c-bronze {
-     background: linear-gradient(to bottom,  rgba(239,166,98,1) 0%,rgba(204,95,0,1) 57%,rgba(204,95,0,1) 58%,rgba(221,150,84,1) 100%);
+    background: radial-gradient(circle, rgba(255,127,0,1) 30%, rgba(177,90,1,1) 100%);
 
 
 }
@@ -19799,8 +19799,7 @@ pre[class*=language-]:before {
 
 
 .bg-c-red {
-     background: linear-gradient(to bottom,  rgba(248,80,50,1) 0%,rgba(241,111,92,1) 50%,rgba(246,41,12,1) 51%,rgba(240,47,23,1) 71%,rgba(231,56,39,1) 100%);
-
+    background: radial-gradient(circle, rgba(255,0,0,1) 0%, rgba(182,0,0,1) 100%);
 }
 
 .text-c-red {
@@ -22759,7 +22758,7 @@ pre[class*=language-]:before {
 }
 
 .pcoded-header.header-blue {
-    background:  linear-gradient(41deg, rgba(140,6,6,1) 0%, rgba(255,0,0,1) 49%, rgba(255,0,0,1) 51%, rgba(130,5,5,1) 100%);
+    background: radial-gradient(circle, rgba(255,0,0,1) 0%, rgba(121,9,9,1) 100%);
 
 }
 
@@ -26571,29 +26570,97 @@ div.dtk-focus-alt table.dataTable tbody th.focus {
 }
 
 
-
-.flag {
-    width: 15px;
-    padding-left: 10px;
+.flag-icon {
+    width: 30px; /* Ajuste o tamanho conforme necessário */
+    height: 30px; /* Definido para manter o tamanho quadrado */
+    background-size: cover; /* Faz com que a imagem cubra o elemento */
+    background-position: center; /* Centraliza a imagem */
+    border-radius: 50%; /* Faz a imagem circular */
+    display: inline-block; /* Garante que a imagem não quebre a linha */
+    vertical-align: middle; /* Alinha a imagem verticalmente com o texto */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.6); /* Adiciona sombra à bandeira */
+    margin-right: 10px; /* Adiciona espaço entre a bandeira e o nome */
 }
+
+.flag-container {
+    display: flex; /* Permite o uso de flexbox */
+    align-items: center; /* Alinha verticalmente o conteúdo dentro do container */
+}
+
+
     #box {
     width:40px;
     height:40px;
     background-color:white;
-    border: 1px solid white;
-    padding-left:3px;
+
     }
 
     .circle {
     border-radius:50%;
     width:100%;
     height:100%;
+    border: 1px solid black;
+
 
     }
 
+    .dashboard-container {
+        width: 90%;
+        max-width: 1200px;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
 
+    .title {
+        font-size: 24px;
+        font-weight: 700;
+        color: #c00;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    .info-cards {
+        display: flex;
+        justify-content: space-around;
+        margin-bottom: 30px;
+    }
+
+    .info-card {
+        background-color: #c00;
+        color: #fff;
+        border-radius: 10px;
+        padding: 20px;
+        flex: 1;
+        margin: 0 10px;
+        text-align: center;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    }
+
+    .info-card h2 {
+        margin: 0;
+        font-size: 30px;
+    }
+
+    .info-card p {
+        margin: 5px 0 0;
+        font-size: 16px;
+    }
+
+.img-flag-detail {
+    box-shadow: 2px 2px 5px grey;
+    max-height: 80px;
+    float: right;
+    border-radius: 4px;
+}
+.highlighted {
+    background-color: blueviolet !important;
+    color: white;
+}
 }
 
+}
 
 /* image varient End */
 /**====== Authentication css end ======**/

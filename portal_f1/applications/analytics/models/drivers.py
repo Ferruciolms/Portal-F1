@@ -17,4 +17,6 @@ class Driver(models.Model):
 
     class Meta:
         verbose_name_plural = "Drivers"
+        ordering = ["fname"]
+
 

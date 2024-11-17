@@ -1,0 +1,102 @@
+{% extends 'system/model_system.html' %}
+
+{% load static %}
+
+{% block title %} Circuits {% endblock %}
+
+{% block body_system %}
+<section class="pcoded-main-container">
+    <div class="pcoded-content">
+        <!-- Menu Reversivo start -->
+        <div class="page-header">
+            <div class="page-block">
+                <div class="row align-items-center">
+                    <div class="col-md-12">
+                        <div class="page-header-title">
+                            <h5 class="m-b-10">Circuits</h5>
+                        </div>
+                        <ul class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="{% url 'circuit_list' %}"><i
+                                    class="feather icon-home"></i></a></li>
+                            <li class="breadcrumb-item">Circuits List</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Menu Reversivo end -->
+        <!-- Menu Corpo start -->
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>Registered Circuits</h5>
+                        <a href="" class="btn btn-primary btn-sm float-right">Add Circuit</a>
+                    </div>
+                    <div class="card-body">
+                        <form class="form-inline" method="GET">
+                            <div class="form-group">
+                                <label for="filter_circuit">Filter</label>
+                                {{ filter.form }}
+                            </div>
+                            <div class="mt-4">
+                                <button type="submit" id="filter-button" class="btn btn-block btn-primary mb-4">Filter
+                                </button>
+                            </div>
+                        </form>
+                        <div class="card-body table-bfamily-style">
+                            <div class="table-responsive">
+                                <table class="table table-striped" id="tabela-listar-circuits">
+                                    <thead>
+                                    <tr>
+
+                                        <th>Country</th>
+                                        <th>Name</th>
+                                        <th>City</th>
+                                        <th>Stats</th>
+
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for circuit in object_list %}
+                                    <tr>
+                                        <td>
+                                            <div class="flag-container">
+                                                <div class="flag-icon"
+                                                     style="background-image: url('{{ circuit.country_flag.url }}');"></div>
+                                                {{ circuit.country }}
+                                            </div>
+                                        </td>
+                                        <td>{{ circuit.name }}</td>
+                                        <td>{{ circuit.city }}</td>
+                                        <td>
+                                            <a href="{% url 'circuit-detail' circuit.id %}">
+                                                <button type="button" class="btn btn-icon btn-success btn-sm"
+                                                        data-toggle="tooltip" data-placement="top" title="Details">
+                                                    <i class="fa fa-bar-chart" aria-hidden="true"></i>
+                                                </button>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    {% empty %}
+                                    <tr>
+                                        <td colspan="5" align="center">No Circuit found.</td>
+                                    </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                                {% include 'includes/paginacao_list.html' %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Menu Corpo end -->
+</section>
+{% endblock body_system %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block script_base %}
+{% endblock script_base %}

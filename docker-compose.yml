@@ -1,0 +1,57 @@
+version: '3.8'
+volumes:
+  db-postgresql-data:
+  media_web:
+
+services:
+  db:
+    image: postgres:16-alpine3.20
+    restart: always
+    container_name: db-portal-f1
+    hostname: db-portal-f1
+    env_file: ".env_db"
+    environment:
+      POSTGRES_USER: ${POSTGRES_GRANTED_USER}
+      POSTGRES_PASSWORD: ${PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+      TZ: ${TIMEZONE}
+      LANG: ${LANG}
+      POSTGRES_HOST_AUTH_METHOD: ${AUTH_LOCAL}
+      POSTGRES_INITDB_ARGS: "--locale=${LANG} --auth-local=${AUTH_LOCAL} --auth-host=${AUTH_LOCAL}"
+    volumes:
+      - db-postgresql-data:/var/lib/postgresql/data
+    ports:
+      - "5433:5432"
+    expose:
+      - '5432'
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U postgres" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - db-postgresql-network
+
+
+  web:
+    container_name: web-portal-f1
+    hostname: web-portal-f1
+    restart: always
+    env_file: ".env_web"
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    environment:
+      TZ: ${TZ}
+    volumes:
+      - media_web:/staticfiles/uploads
+    ports:
+      - 8000:5005
+    depends_on:
+      - db
+    networks:
+      - db-postgresql-network
+
+networks:
+  db-postgresql-network:
+    driver: bridge

@@ -195,16 +195,37 @@
 
 /*** Facts ***/
 .fact {
-    background: linear-gradient(rgba(0, 0, 0, .6), rgba(0, 0, 0, .6)), url(../img/mclaren1.jpg);
-    background-position: center center;
+    background: linear-gradient(rgba(0, 0, 0, .6), rgba(0, 0, 0, .8)), url(../img/mclaren1.jpg);
+    background-position: 80% 70%;
     background-repeat: no-repeat;
     background-size: cover;
 }
 
+.container-fact {
+  display: flex;
+  grid-template-columns: repeat(6, 1fr);
+  display: flex;
+  justify-content: center;
+  align-items: center
+}
+.icon-container {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto;
+  /* Outras propriedades de estilo para o ícone */
+}
 
+svg {
+  display: block;
+  margin: 0 auto;
+  width: 80px;
+  height: 80px;
+}
 
-/*** Service ***/
-.service .nav .nav-link {
+.material-icons {
+  font-size: 24px; /* Tamanho do ícone */
+}
+/*** Service ***/v.service .nav .nav-link {
     background: var(--light);
     transition: .5s;
 }

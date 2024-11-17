@@ -1,37 +1,44 @@
 <!-- Fact Start -->
 {% load svg %}
 <div class="container-fluid fact bg-dark my-5 py-5">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-2 col-lg-2 text-center wow fadeIn" data-wow-delay="0.5s" style="align-content: flex-start">
-                <i> {% svg 'redlights' %}</i>
-                <h2 class="text-white mb-2" data-toggle="counter-up">{{total_races}}</h2>
-                <p class="text-white mb-0">GPs in F1 history</p>
+    <div class="container_fact">
+        <div class="row g-6">
+            <div class="col-md-2 col-lg-2 text-center wow fadeIn" data-wow-delay="0.5s" style="align-content: center">
+                {% svg 'redlights' %}
+                <h1 class="text-white mb-2" data-toggle="counter-up">{{total_races}}</h1>
+                <h2 class="text-white mb-0">GRANX PRIX</h2>
+                <p class="text-white mb-0">in F1 history</p>
             </div>
-            <div class="col-md-2 col-lg-2 text-center wow fadeIn" data-wow-delay="1s" style="align-content: flex-start">
-                <i> {% svg 'constructor' %}</i>
-                <h2 class="text-white mb-2" data-toggle="counter-up">{{total_constructors}}</h2>
-                <p class="text-white mb-0">constructor have competed in F1 history</p>
+            <div class="col-md-2 col-lg-2 text-center wow fadeIn" data-wow-delay="0.8s" style="align-content: center">
+                {% svg 'wheel' %}
+                <h1 class="text-white mb-2" data-toggle="counter-up">{{total_constructors}}</h1>
+                <h2 class="text-white mb-0">CONSTRUCTORS</h2>
+                <p class="text-white mb-0">in F1 history</p>
             </div>
-            <div class="col-md-2 col-lg-2 text-center wow fadeIn" data-wow-delay="1.5s" style="align-content: flex-start">
-                <i>{% svg 'circuit' %}</i>
-                <h2 class="text-white mb-2" data-toggle="counter-up">{{total_circuits}}</h2>
-                <p class="text-white mb-0">Circuits were part in F1 history</p>
+            <div class="col-md-2 col-lg-2 text-center wow fadeIn" data-wow-delay="1.1s" style="align-content: center">
+                {% svg 'circuit' %}
+                <h1 class="text-white mb-2" data-toggle="counter-up">{{total_circuits}}</h1>
+                <h2 class="text-white mb-0">CIRCUITS</h2>
+                <p class="text-white mb-0">in F1 history</p>
             </div>
-            <div class="col-md-2 col-lg-2 text-center wow fadeIn" data-wow-delay="2s" style="align-content: flex-start">
-                <i>{% svg 'driver' %}</i>
-                <h2 class="text-white mb-2" data-toggle="counter-up">{{total_drivers}}</h2>
-                <p class="text-white mb-0">Drivers races in F1 History</p>
+            <div class="col-md-2 col-lg-2 text-center wow fadeIn" data-wow-delay="1.4s" style="align-content: center">
+                    {% svg 'driver' %}
+                <h1 class="text-white mb-2" data-toggle="counter-up">{{total_drivers}}</h1>
+                <h2 class="text-white mb-0">DRIVERS</h2>
+                <p class="text-white mb-0">in F1 history</p>
             </div>
-            <div class="col-md-2 col-lg-2 text-center wow fadeIn" data-wow-delay="2.5s" style="align-content: flex-start">
-                <i>{% svg 'constructor_champion' %}</i>
-                <h2 class="text-white mb-2" data-toggle="counter-up"></h2>
-                <p class="text-white mb-0">teams have won the constructor's world championship in F1 history</p>
+            <div class="col-md-2 col-lg-2 text-center wow fadeIn" data-wow-delay="1.7s" style="align-content: center">
+                    {% svg 'constructor_champion' %}
+                <h1 class="text-white mb-2" data-toggle="counter-up">{{constructors_wc}}</h1>
+                <h2 class="text-white mb-0">CONSTRUCTORS CHAMPIONS</h2>
+                <p class="text-white mb-0">in F1 history</p>
             </div>
-            <div class="col-md-2 col-lg-2 text-center wow fadeIn" data-wow-delay="3" style="align-content: flex-start">
-                <i>{% svg 'driver_champion' %}</i>
-                <h2 class="text-white mb-2" data-toggle="counter-up"></h2>
-                <p class="text-white mb-0">Drivers became champions in F1 History</p>
+            <div class="col-md-2 col-lg-2 text-center wow fadeIn" data-wow-delay="2s" style="align-content: center">
+                    {% svg 'driver_champion' %}
+
+                <h1 class="text-white mb-2" data-toggle="counter-up">{{drivers_wc}}</h1>
+                <h2 class="text-white mb-0">DRIVERS CHAMPIONS</h2>
+                <p class="text-white mb-0">in F1 history</p>
             </div>
         </div>
     </div>
